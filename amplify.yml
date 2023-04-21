@@ -2,17 +2,17 @@ version: 1
 env:
   variables:
     key: value
-backend:
-  phases:
-    preBuild:
-      commands:
-        - *enter command*
-    build:
-      commands:
-        - *enter command*
-    postBuild:
-        commands:
-        - *enter command*
+# backend:
+#   phases:
+#     preBuild:
+#       commands:
+#         - *enter command*
+#     build:
+#       commands:
+#         - *enter command*
+#     postBuild:
+#         commands:
+#         - *enter command*
 frontend:
   phases:
     preBuild:
