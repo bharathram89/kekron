@@ -9,9 +9,8 @@ function WeaponsList() {
 
   useEffect(() => {
     async()=>{
-      let x = await getWeapons();
-      console.log(x,"asdf")
-      setData(x);
+      let weapons = await getWeapons();
+      setData(weapons);
     }
   }, []);
 
