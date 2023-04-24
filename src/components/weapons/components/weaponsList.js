@@ -7,11 +7,11 @@ function WeaponsList() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    // fetch("http://ac-env.eba-gpuryyiq.us-west-1.elasticbeanstalk.com/weapons")
-    //   .then((response) => response.json())
-    //   .then((data) => setData(data))
-    //   .catch((error) => console.log(error));
-    setData(weaponsList);
+    fetch("http://ac-env.eba-gpuryyiq.us-west-1.elasticbeanstalk.com/weapons")
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.log(error));
+    // setData(weaponsList);
   }, []);
 
   // group weapons by type
