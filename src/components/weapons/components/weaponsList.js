@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Box, Grid } from '@mui/material';
 import weaponsList from '../../mock';
 import WeaponsType from './weaponType';
+import { getWeapons } from '../../../service/weapons';
 
 function WeaponsList() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("http://ac-env.eba-gpuryyiq.us-west-1.elasticbeanstalk.com/weapons")
-      .then((response) => response.json())
-      .then((data) => setData(data))
-      .catch((error) => console.log(error));
-    // setData(weaponsList);
+    async()=>{
+      let x = await getWeapons();
+      console.log(x,"asdf")
+      setData(x);
+    }
   }, []);
 
   // group weapons by type
