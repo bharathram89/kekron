@@ -8,12 +8,15 @@ function WeaponsList() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    async()=>{
-      let weapons = await getWeapons();
-      setData(weapons);
-    }
-  }, []);
+    fetchGunsData()
+  }, [])
 
+  const fetchGunsData = () => {
+    getWeapons()
+      .then(data => {
+        setData(data)
+      })
+  }
   // group weapons by type
   const groupedData = data.reduce((acc, curr) => {
     if (acc[curr.type]) {
