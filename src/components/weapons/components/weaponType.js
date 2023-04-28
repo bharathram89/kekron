@@ -41,7 +41,7 @@ function WeaponsType({ type, data }) {
       <div className='pagination-section'>
       {data.length > 2 && 
         <Pagination 
-          count={2} 
+          count={data.length % 2 === 0 ? data.length / 2 : (data.length + 1) /2 } 
           defaultPage={1} 
           onChange={handlePageChange}
           siblingCount={0} />
