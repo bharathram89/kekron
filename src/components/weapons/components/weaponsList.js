@@ -28,10 +28,10 @@ function WeaponsList() {
   }, {});
   
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, backgroundColor: '#28282B' }}>
       <Grid container sx={{ flexDirection: 'row' }}>
         {Object.keys(groupedData).map((type) => (
-          <Grid item xs={12} md={6} lg={4} key={type}>
+          <Grid item sm={4} md={3} lg={2.4} key={type}>
             <WeaponsType key={type} type={type} data={groupedData[type]} />
           </Grid>
         ))}

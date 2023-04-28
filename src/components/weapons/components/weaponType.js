@@ -3,7 +3,7 @@ import { Box, Paper, Typography } from '@mui/material';
 import WeaponsBase from './weaponsBase';
 import { Canvas } from '@react-three/fiber';
 import ReactPaginate from 'react-paginate';
-
+import './weapons.css'
 function WeaponsType({ type, data }) {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 2;
@@ -22,14 +22,14 @@ function WeaponsType({ type, data }) {
 
   return (
     <Box key={type} sx={{ mb: 4 }}>
-      <Typography variant="h2" gutterBottom>
-        {type}
+      <Typography className='main-heading' SSvariant="h4" gutterBottom color="aqua">
+        {type.toString().toUpperCase()}
       </Typography>
       {getWeaponsForPage().map((item) => (
-        <Box key={item.id} sx={{ mb: 2 }}>
-          <Paper sx={{ p: 2 }}>
-            <Typography variant="h6" gutterBottom>
-              {item.name}
+        <Box key={item.id} sx={{ m: 1 }} className='card-box'>
+          <Paper sx={{ p: 2 , backgroundColor: '#000000 !important' }} className='main-section'>
+            <Typography gutterBottom color="aqua" className='in-heading'>
+              {item.name.toString().toUpperCase()}
             </Typography>
             <Canvas>
               <WeaponsBase glbFile={'glb/' + item.modelUrl + '.glb'} />
@@ -38,12 +38,20 @@ function WeaponsType({ type, data }) {
         </Box>
       ))}
       <ReactPaginate
+        breakClassName={'item break-me '}
+        breakLabel={'...'}
+        disabledClassName={'disabled-page'}
+        nextClassName={"item next "}
+        pageClassName={'item pagination-page '}
+        previousClassName={"item previous"}
         pageCount={Math.ceil(data.length / itemsPerPage)}
+        nextLabel=">"
+        previousLabel="<"
         marginPagesDisplayed={2}
         pageRangeDisplayed={5}
         onPageChange={handlePageChange}
         containerClassName={'pagination'}
-        activeClassName={'active'}
+        activeClassName={'item active'}
       />
     </Box>
   );
