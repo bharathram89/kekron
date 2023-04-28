@@ -19,7 +19,7 @@ export default function App() {
       bottom: 0,
       width: '100%',
       height: '100vh',
-      backgroundColor: 'white',
+      backgroundColor: '#28282B',
       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
       zIndex: 1, // Ensures the main container is above other elements on the page
     },
