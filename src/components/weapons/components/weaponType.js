@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Paper, Typography } from '@mui/material';
+import { Box, Card, Typography } from '@mui/material';
 import WeaponsBase from './weaponsBase';
 import { Canvas } from '@react-three/fiber';
 import ReactPaginate from 'react-paginate';
@@ -20,6 +20,9 @@ function WeaponsType({ type, data }) {
     setCurrentPage(selected);
   };
 
+  const handleWeaponClick = (item) => () => {
+    console.log('Clicked!', item.id);
+  };
   return (
     <Box key={type} sx={{ mb: 4 }}>
       <Typography className='main-heading' SSvariant="h4" gutterBottom color="aqua">
@@ -27,14 +30,14 @@ function WeaponsType({ type, data }) {
       </Typography>
       {getWeaponsForPage().map((item) => (
         <Box key={item.id} sx={{ m: 1 }} className='card-box'>
-          <Paper sx={{ p: 2 , backgroundColor: '#000000 !important' }} className='main-section'>
-            <Typography gutterBottom color="aqua" className='in-heading'>
+          <Card sx={{ p: 2 , backgroundColor: '#000000 !important' }} className='main-section'>
+            <Typography onClick={handleWeaponClick(item)} gutterBottom color="aqua" className='in-heading'>
               {item.name.toString().toUpperCase()}
             </Typography>
-            <Canvas>
+            <Canvas >
               <WeaponsBase glbFile={'glb/' + item.modelUrl + '.glb'} />
             </Canvas>
-          </Paper>
+          </Card>
         </Box>
       ))}
       <ReactPaginate
