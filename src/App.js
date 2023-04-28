@@ -18,7 +18,7 @@ export default function App() {
       left: 0,
       bottom: 0,
       width: '100%',
-      height: '100vh',
+      height: 'auto',
       backgroundColor: 'white',
       boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
       zIndex: 1, // Ensures the main container is above other elements on the page
@@ -44,15 +44,17 @@ export default function App() {
   return (
     <BrowserRouter>
       <Box sx={styles.rootContainer}>
-        <Box sx={styles.header}>
-          <Header/>
-        </Box>
+        {/* <Box sx={styles.header}>
+          
+        </Box> */}
+        
         <Box sx={styles.contentContainer}>
+        <Header/>
           <AppRoutes />
         </Box>
-        <Box sx={styles.footer}>
+        {/* <Box sx={styles.footer}>
           KEKRON
-        </Box>    
+        </Box>     */}
       </Box>
     </BrowserRouter>
   );

@@ -1,0 +1,49 @@
+.main-heading{
+  text-align: center!important;
+  margin-top: 20px!important;
+  margin-bottom: 15px!important;
+  font-size: 20px!important;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+
+}
+
+.card-box:hover {
+  transition: all 0.3s ease-out;
+  box-shadow: 0px 4px 8px rgba(38, 38, 38, 0.2);
+  top: -7px;
+  border: 2px solid #b8aa34;
+  background-color: rgb(214, 196, 196)!important;
+}
+.in-heading{
+  font-size: 15px!important;
+}
+.weapon{
+  width: 200px!important;
+  margin-top: 30px!important;
+  height: 160px!important;
+}
+.main-section:hover{
+  background-color: #7a4a4a!important
+}
+.css-17bffyj{
+  height: 100%!important;
+}
+.pagination-section{
+  padding-top: 20px!important;
+  text-align: center!important;
+  height: 100px;
+}
+.MuiPagination-ul{
+  margin-left: 40px!important;
+}
+.MuiPagination-ul li a{
+  color: white!important;
+}
+.MuiButtonBase-root{
+  color: white!important;
+}
+
+.css-12tzwlg{
+  height: 100%!important;
+}

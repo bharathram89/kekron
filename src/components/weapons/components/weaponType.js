@@ -2,49 +2,51 @@ import React, { useState } from 'react';
 import { Box, Paper, Typography } from '@mui/material';
 import WeaponsBase from './weaponsBase';
 import { Canvas } from '@react-three/fiber';
-import ReactPaginate from 'react-paginate';
+import './weapontype.css';
+import Pagination from '@mui/material/Pagination';
 
 function WeaponsType({ type, data }) {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 2;
 
-  // get the weapons for the current page
   const getWeaponsForPage = () => {
     const startIndex = currentPage * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;
     return data.slice(startIndex, endIndex);
   };
 
-  // handle page change
-  const handlePageChange = ({ selected }) => {
-    setCurrentPage(selected);
+  const handlePageChange = (evt, value) => {
+    setCurrentPage(value - 1);
   };
 
   return (
     <Box key={type} sx={{ mb: 4 }}>
-      <Typography variant="h2" gutterBottom>
-        {type}
+      <Typography className='main-heading' SSvariant="h4" gutterBottom color="aqua">
+        {type.toString().toUpperCase()}
       </Typography>
+      <div className='main-weapon-card'>
       {getWeaponsForPage().map((item) => (
-        <Box key={item.id} sx={{ mb: 2 }}>
-          <Paper sx={{ p: 2 }}>
-            <Typography variant="h6" gutterBottom>
-              {item.name}
+        <Box key={item.id} sx={{ m: 1 }} className='card-box'>
+          <Paper sx={{ p: 2, backgroundColor: '#000000 !important' }} className='main-section'>
+            <Typography gutterBottom color="aqua" className='in-heading'>
+              {item.name.toString().toUpperCase()}
             </Typography>
-            <Canvas>
+            <Canvas className='weapon'>
               <WeaponsBase glbFile={'glb/' + item.modelUrl + '.glb'} />
             </Canvas>
           </Paper>
         </Box>
       ))}
-      <ReactPaginate
-        pageCount={Math.ceil(data.length / itemsPerPage)}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={handlePageChange}
-        containerClassName={'pagination'}
-        activeClassName={'active'}
-      />
+      </div>
+      <div className='pagination-section'>
+      {data.length > 2 && 
+        <Pagination 
+          count={2} 
+          defaultPage={1} 
+          onChange={handlePageChange}
+          siblingCount={0} />
+        }
+    </div>
     </Box>
   );
 }

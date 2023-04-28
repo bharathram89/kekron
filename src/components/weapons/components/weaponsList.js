@@ -2,21 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { Box, Grid } from '@mui/material';
 import weaponsList from '../../mock';
 import WeaponsType from './weaponType';
-import { getWeapons } from '../../../service/weapons';
+// import { getWeapons } from '../../../service/weapons';
 
 function WeaponsList() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(weaponsList);
 
-  useEffect(() => {
-    fetchGunsData()
-  }, [])
+  // useEffect(() => {
+  //   fetchGunsData()
+  // }, [])
 
-  const fetchGunsData = () => {
-    getWeapons()
-      .then(data => {
-        setData(data)
-      })
-  }
+  // const fetchGunsData = () => {
+  //   getWeapons()
+  //     .then(data => {
+  //       setData(weaponsList)
+  //     })
+  // }
   // group weapons by type
   const groupedData = data.reduce((acc, curr) => {
     if (acc[curr.type]) {
@@ -28,10 +28,10 @@ function WeaponsList() {
   }, {});
   
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, backgroundColor: '#28282B' }}>
       <Grid container sx={{ flexDirection: 'row' }}>
         {Object.keys(groupedData).map((type) => (
-          <Grid item xs={12} md={6} lg={4} key={type}>
+          <Grid item xs={12} sm={4} md={3} lg={2.4} key={type}>
             <WeaponsType key={type} type={type} data={groupedData[type]} />
           </Grid>
         ))}

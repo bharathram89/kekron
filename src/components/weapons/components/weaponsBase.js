@@ -4,7 +4,6 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
 
 function Model(props) {
-  console.log(props)
     const { scene, nodes, materials } = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com/'+props.glbFile)//'./glb/scar.glb')
     return <primitive object={scene} {...props} />
   }
