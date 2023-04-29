@@ -4,6 +4,7 @@ import Gear from './components/gear';
 import Weapons from './components/weapons';
 import Tacticals from './components/tacticals';
 import Home from './components/home';
+import WeaponDetail from './components/weapons/components/weaponDetail';
 
 export default function AppRoutes() {
   return (
@@ -13,6 +14,8 @@ export default function AppRoutes() {
       <Route path="/weapons" element={<Weapons />} />
       <Route path="/tacticals" element={<Tacticals />} />
       <Route path="/home" element={<Home />} />
+      <Route path="/weapon/:id" element={<WeaponDetail />} />
+      {/* WeaponDetail */}
     </Routes>
   );
 }

@@ -1,5 +1,18 @@
+export let weapon = {
+    name:'Sig552',
+    category:'Airsoft',//airsoft,paintball,realsteel
+    type:'rifle',//rifle,shotgun,handgun
+    subType:'AUG',//AR, AK, pump, leaver, pistol,revolver
+    action:'auto', //semi, auto, bolt, break, muzzle leading
+    ammo:"5.56",
+    modelUrl:'Sig552Updated',
+    mods:['sights','underbarrel','magazine']
+}
+export let weaponSights = ['Holographic Sight', 'Optical Sight (1)', 'Optical Sight (2)', 'Optical Sight (3)', 'Reflex Sight (1)', 'Reflex Sight (2)', 'Reflex Sight (3)'  ]
+export let weaponUnderbarrel = ['Vertical Grip (1)', 'Vertical Grip (2)', 'Vertical Grip (3)', 'Vertical Grip (4)', 'Vertical Grip (5)', 'Vertical Grip (6)']
+export let weaponMagazine = ['sig552_mobile_diffuse', 'Magazine (1) Short', 'Magazine (2) Short' , 'Magazine (3) Short', 'Magazine (4) Short', 'Magazine (5) Short', 'Magazine (1) Standard', 'Magazine (2) Standard', 'Magazine (3) Standard', 'Magazine (4) Standard', 'Magazine (5) Standard' ]
 
-let weaponsList = [
+export let weaponsList = [
     {
         name:'AR-15',
         category:'Airsoft',//airsoft,paintball,realsteel
@@ -133,5 +146,3 @@ let weaponsList = [
     
 
 ]
-
- export default weaponsList
