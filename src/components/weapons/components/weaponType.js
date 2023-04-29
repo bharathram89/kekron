@@ -3,10 +3,13 @@ import { Box, Card, Typography } from '@mui/material';
 import WeaponsBase from './weaponsBase';
 import { Canvas } from '@react-three/fiber';
 import ReactPaginate from 'react-paginate';
+import { useNavigate } from 'react-router-dom';
 import './weapons.css'
+
 function WeaponsType({ type, data }) {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 2;
+  const navigate = useNavigate();
 
   // get the weapons for the current page
   const getWeaponsForPage = () => {
@@ -22,6 +25,8 @@ function WeaponsType({ type, data }) {
 
   const handleWeaponClick = (item) => () => {
     console.log('Clicked!', item.id);
+    navigate('/weapon/'+item.id);
+
   };
   return (
     <Box key={type} sx={{ mb: 4 }}>
