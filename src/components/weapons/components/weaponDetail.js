@@ -1,9 +1,10 @@
-import React, { Suspense, useState } from 'react'
+import React, { Suspense, useState, useEffect } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
 import { useParams } from "react-router-dom";
 import { Sig552 } from '../../static/Sig552';
 import { weapon, weaponSights, weaponUnderbarrel, weaponMagazine} from '../../mock';
+import { getWeapon, getUniqueWeaponAttachmentType, getWeaponAttachments } from '../../../service/weapons';
 
 function Model({ gltfPath, position, rotation }) {
   const gltf = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com/'+gltfPath, true); // load the glTF model and cache it
@@ -21,6 +22,37 @@ function WeaponDetail() {
   const [selectedMag, setselectedMag] = useState(null);
   const [selectedUnderbarrel, setselectedUnderbarrel] = useState(null);
   
+  useEffect(() => {
+    fetchGunsDetails()
+  }, [])
+
+  
+
+  const fetchGunsDetails = () => {
+    getWeapon(id)
+      .then(data => {
+        // setData(data)
+      })
+
+    getUniqueWeaponAttachmentType(id)
+      .then(data => {
+        // setData(data)
+      })
+    
+    getWeaponAttachments(id)
+      .then(data => {
+        const groupedData = data.reduce((acc, curr) => {
+            if (acc[curr.type]) {
+              acc[curr.type].push(curr);
+            } else {
+              acc[curr.type] = [curr];
+            }
+            return acc;
+          }, {});
+           console.log(groupedData,data,"grouped data")
+        // setData(data)
+      })
+  }
   const selectStyle = {
     background: 'transparent', 
     color: 'white', 

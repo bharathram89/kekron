@@ -28,7 +28,7 @@ function MainFeaturedPost(props) {
       <Grid style={{ height: "50vh" }}>
         
         <Canvas dpr={[4, 8]} camera={{ fov: 45 }}>
-            <WeaponBase glbFile="glb/scar.glb"></WeaponBase>
+            <WeaponBase glbFile="glb/Scar.glb"></WeaponBase>
         </Canvas>
       </Grid>
     </Paper>
