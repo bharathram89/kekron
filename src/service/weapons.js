@@ -1,5 +1,4 @@
 
-const API_URL = 'https://example.com/api';
 
 export const getWeapons = async () => {
   try {
