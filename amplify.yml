@@ -5,7 +5,6 @@ frontend:
       commands:
         - nvm install 18.16.0
         - nvm use 18.16.0
-        - npm ci
         - yarn install
     build:
       commands:
