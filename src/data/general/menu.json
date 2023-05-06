@@ -10,22 +10,22 @@
         {
             "id": "menu-4",
             "text": "Armory",
-            "link": "/faq",
+            "link": "/weapons",
             "submenu": [
                 {
                     "id": "menu-41",
                     "text": "Weapons",
-                    "link": "/about-us"
+                    "link": "/weapons"
                 },
                 {
                     "id": "menu-42",
                     "text": "Characters",
-                    "link": "/games"
+                    "link": "/characters"
                 },
                 {
                     "id": "menu-43",
                     "text": "Tacticals",
-                    "link": "/faq"
+                    "link": "/tacticals"
                 }
             ]
         },
