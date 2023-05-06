@@ -44,7 +44,7 @@ const GamesArea = ({ data }) => {
         const searchVal = e.target.value;
     };
     return (
-        <section className="games-section pt-16 md:pt-24 pb-16 md:pb-28">
+        <section className="games-section pt-16 md:pt-12 pb-16 md:pb-28">
             <div className="container">
                 <div className="filter-wrap bg-secondary-70 rounded-2xl px-5 py-7 mb-10">
                     <div className="flex justify-between">
