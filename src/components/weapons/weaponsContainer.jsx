@@ -15,9 +15,9 @@ function WeaponsContainer({ data }) {
   const getWeaponsForPage = () => {
     const startIndex = currentPage * itemsPerPage;
     let endIndex = startIndex + itemsPerPage;
-    endIndex = endIndex > data.length ? data.length : endIndex;
-    console.log(data,data.slice(startIndex, endIndex))
-    return data.slice(startIndex, endIndex);
+    endIndex = endIndex > data?.length ? data?.length : endIndex;
+    // console.log(data,data.slice(startIndex, endIndex))
+    if (data) return data.slice(startIndex, endIndex); else return []
   };
   
   // handle page change
