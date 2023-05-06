@@ -8,15 +8,15 @@ module.exports = {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: "#B154F0",
-                    90: "#814AC8",
+                    DEFAULT: "#5461f0",
+                    90: "#0e1a36",
                 },
                 secondary: {
-                    60: "#16073a",
-                    70: "#140e38",
-                    80: "#423A5F",
-                    90: "#281e4d",
-                    100: "#09002a",
+                    60: "#070c3a",
+                    70: "#0e1838",
+                    80: "#3a405f",
+                    90: "#1e224d",
+                    100: "#00092a",
                 },
                 yollow: {
                     DEFAULT: "#ffa700",
