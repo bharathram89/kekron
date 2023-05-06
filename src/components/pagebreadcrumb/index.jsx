@@ -26,7 +26,7 @@ const PageBreadcrumb = ({ title, crumbLabel, location, pageContext }) => {
     ];
     return (
         <section
-            className="breadcrumb-wrap relative pb-24 pt-24 lg:pt-36 mb-80 bg-cover bg-bottom"
+            className="breadcrumb-wrap relative pt-12 lg:pt-12 mb-20 bg-cover bg-bottom"
             style={{
                 backgroundImage: `url(${BreadcrumbImage})`,
             }}
