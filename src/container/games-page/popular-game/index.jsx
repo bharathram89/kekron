@@ -33,7 +33,7 @@ const GamesArea = ({ data }) => {
         setFilterGames(filteredGames);
     };
 
-    const categories = ["Rifle", "Shotgun","Pistol"];
+    const categories = ["Rifle", "Shotgun","Pistol","Sniper","Smg"];
 
     // -------------------------
     // Search Box Flter
