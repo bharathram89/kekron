@@ -5,10 +5,13 @@ import { flatDeep, containsObject } from "@utils/functions";
 const GameCategories = ({ selectItem, categories }) => {
     let cats = [];
 
-    categories?.forEach((cat) => {
+    // const allCategories = flatDeep(categories);
+
+    categories.forEach((cat) => {
         const obj = {
             title: cat
         };
+       
         cats.push(obj);
     });
 
@@ -23,7 +26,7 @@ const GameCategories = ({ selectItem, categories }) => {
                 <option value="all" className="bg-black">
                     All Category
                 </option>
-                {cats?.map((cat) => (
+                {cats.map((cat) => (
                     <option key={cat.slug} value={cat.slug}>
                         {cat.title}
                     </option>

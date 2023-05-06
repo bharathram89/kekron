@@ -5,6 +5,7 @@ import Button from "../../../components/shared/button";
 import HeroImage from "../../../data/images/hero/hero-bg1.webp";
 import WeaponsBase from "../../../components/weapons/weaponsBase"
 import { Canvas } from '@react-three/fiber'
+
 const HeroArea = ({ data }) => {
     return (
         <section
@@ -13,36 +14,40 @@ const HeroArea = ({ data }) => {
                 backgroundImage: `url(${HeroImage})`,
             }}
         >
-            <div className="container px-4 z-10">
-                <div className="text-white mt-6">
-                    {data?.headings?.[0] && (
-                        <h1 className="mb-6 sm:mb-10 text-shadow uppercase max-w-3xl">
-                            {data.headings[0].content}
-                        </h1>
-                    )}
-                    {data?.texts?.[0] && (
-                        <p className="text-base  lg:text-md font-bold mb-6 sm:mb-10 ">
-                            {data.texts[0].content}
-                        </p>
-                    )}
-                    {data?.buttons &&
-                        data.buttons.map(({ id, content, ...props }) => (
-                            <Button key={id} {...props} className="text-white">
-                                {content}
-                                <StaticImage
-                                    className="align-middle ml-3 transition-all group-hover:ml-5"
-                                    src="../../../data/images/icons/arrrow-icon.webp"
-                                    alt=""
-                                />
-                            </Button>
-                        ))}
-                </div>
-            </div>
-            <div className="container">
-                <Canvas style={{ width:'600px', height: '500px' }} camera={{ fov: 45 }}>
-                    <WeaponsBase glbFile="glb/Scar.glb"></WeaponsBase>
-                </Canvas>
-            </div>
+          
+          <div className="container px-4 z-10">
+  <div className="text-white mt-6">
+    {data?.headings?.[0] && (
+      <h1 className="mb-6 sm:mb-10 text-shadow uppercase max-w-3xl">
+        {data.headings[0].content}
+      </h1>
+    )}
+    {data?.texts?.[0] && (
+      <p className="text-base lg:text-md font-bold mb-6 sm:mb-10">
+        {data.texts[0].content}
+      </p>
+    )}
+    {data?.buttons &&
+      data.buttons.map(({ id, content, ...props }) => (
+        <Button key={id} {...props} className="text-white">
+          {content}
+          <StaticImage
+            className="align-middle ml-3 transition-all group-hover:ml-5"
+            src="../../../data/images/icons/arrrow-icon.webp"
+            alt=""
+          />
+        </Button>
+      ))}
+  </div>
+</div>
+<div className="container">
+  <div style={{position: 'relative', paddingTop: '75%'}}>
+    <Canvas style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} camera={{ fov: 45 }}>
+      <WeaponsBase glbFile="glb/Scar.glb"></WeaponsBase>
+    </Canvas>
+  </div>
+</div>
+
         </section>
     );
 };

@@ -9,7 +9,7 @@ function Model(props) {
     return <primitive object={scene} {...props} />
   }
   
-  export default function WeaponsBase(props) {
+function WeaponsBase(props) {
     //https://codesandbox.io/s/staging-models-forked-up6l6v?file=/src/App.js:489-494 
     const myMesh = React.useRef();
 
@@ -20,13 +20,15 @@ function Model(props) {
 
     return (
         <mesh ref={myMesh}>
-          <Suspense fallback={null}>
+          {/* <Suspense fallback={null}> */}
             <PresentationControls speed={4.0} zoom={1.5} >
               <Stage intensity={2}>
                 <Model glbFile={props.glbFile} scale={2.0} />
               </Stage>
             </PresentationControls>
-          </Suspense>
+          {/* </Suspense> */}
         </mesh>
     )
   }
+
+export default WeaponsBase;
