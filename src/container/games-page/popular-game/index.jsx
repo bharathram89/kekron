@@ -5,8 +5,9 @@ import GameCategories from "../../../components/game-categories";
 import SearchBox from "../../../components/search-filter";
 import {getWeapons} from "../../../service/weapons"
 import WeaponsContainer from "../../../components/weapons/weaponsContainer"
-import { Canvas } from '@react-three/fiber';
-const GamesArea = ({}) => {
+
+
+const GamesArea = ({ data }) => {
     const [filterGames, setFilterGames] = useState([]);
     const [allWeapons, setallWeapons] = useState([]);
     const fetchGunsData = () => {
@@ -62,7 +63,6 @@ const GamesArea = ({}) => {
                     </div>
                 </div>
                 <div className="flex flex-wrap -mx-6">
-                   {/* className="w-full md:w-1/2 lg:w-1/2 px-4" */}
                     <WeaponsContainer data={filterGames}></WeaponsContainer>
                 </div>
             </div>

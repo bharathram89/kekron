@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import WeaponsBase from './weaponsBase';
 import { Canvas } from '@react-three/fiber';
 import ReactPaginate from 'react-paginate';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import './weapons.css'
 function WeaponsContainer({ data }) {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 4;
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
     useEffect(() => {
         setCurrentPage(0);
