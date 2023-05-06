@@ -1,9 +1,9 @@
 /* eslint-disable prettier/prettier */
 module.exports = {
-    title: "Bonx",
-    titleTemplate: "Bonx - Gaming React Gatsby Website",
-    description: "React Gatsby",
-    author: "Bonx",
+    title: "Go Loadout",
+    titleTemplate: "Go Loadout - Create and Manage your loadout",
+    description: "React loadout application",
+    author: "Bharath and Bonx",
     twitterUsername: "@bonx",
     keywords: [
         "bootstrap",
@@ -14,7 +14,7 @@ module.exports = {
         "Gaming Website",
     ],
     image: "",
-    siteUrl: "https://bonx.com",
+    siteUrl: "https://www.goloadout.com/",
     pathPrefix: "/",
     localUrl: "http://localhost:8000",
     canonical: "",
@@ -25,7 +25,7 @@ module.exports = {
     },
     siteLanguage: "en",
     favicon: "src/assets/images/favicon.png", // Used for manifest favicon generation
-    shortName: "bonx", // shortname for manifest. *Must* be shorter than 12 characters
+    shortName: "loadout", // shortname for manifest. *Must* be shorter than 12 characters
     themeColor: "#5E60E7",
     backgroundColor: "#fff",
 };
