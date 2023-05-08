@@ -33,11 +33,15 @@ function WeaponsContainer({ data }) {
   return (
    <div  style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', height: '800px'}}>
       {getWeaponsForPage().map((item) => (
-        <div style={{flex: '0 0 calc(50% - 10px)', margin: '5px'}}>
-        <Canvas key={item.id}  onClick={handleWeaponClick(item)} >
-            <WeaponsBase glbFile={'glb/' + item.modelUrl + '.glb'} />
-        </Canvas>
-        </div>
+         <div style={{ flex: '0 0 calc(50% - 10px)', margin: '5px', position: 'relative' }}>
+         <div onClick={handleWeaponClick(item)} className="weapon-title" style={{ position: 'absolute', zIndex: '1'}}>
+           {item?.name}
+         </div>
+         <Canvas key={item.id}>
+           <WeaponsBase glbFile={'glb/' + item.modelUrl + '.glb'} />
+         </Canvas>
+       </div>
+    
       ))}
       <ReactPaginate
         breakClassName={'item break-me '}

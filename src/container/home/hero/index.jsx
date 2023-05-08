@@ -5,6 +5,9 @@ import Button from "../../../components/shared/button";
 import HeroImage from "../../../data/images/hero/hero-bg1.webp";
 import WeaponsBase from "../../../components/weapons/weaponsBase"
 import { Canvas } from '@react-three/fiber'
+import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
+
+import Weapon from "../../../assets/weaponsJsx/Weapon"
 
 const HeroArea = ({ data }) => {
     return (
@@ -44,6 +47,12 @@ const HeroArea = ({ data }) => {
   <div style={{position: 'relative', paddingTop: '75%'}}>
     <Canvas style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} camera={{ fov: 45 }}>
       <WeaponsBase glbFile="glb/Scar.glb"></WeaponsBase>
+      {/* <PresentationControls speed={4.0} zoom={1.5} >
+              <Stage intensity={2}>
+                
+      <Weapon></Weapon>
+              </Stage>
+            </PresentationControls> */}
     </Canvas>
   </div>
 </div>
