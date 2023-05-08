@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import WeaponsBase from './weaponsBase';
 import { Canvas } from '@react-three/fiber';
 import ReactPaginate from 'react-paginate';
-import SectionSubTitle from '../title';
 // import { useNavigate } from 'react-router-dom';
 import './weapons.css'
 function WeaponsContainer({ data }) {
