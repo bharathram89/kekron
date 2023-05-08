@@ -45,28 +45,24 @@ const GamesArea = ({ data }) => {
     };
     return (
         <section className="games-section pt-16 md:pt-12 pb-16 md:pb-28">
-            <div className="container">
-                <div className="filter-wrap bg-secondary-70 rounded-2xl px-5 py-7 mb-10">
-                    <div className="flex justify-between">
-                        <div className="category-filter">
-                            <GameCategories
-                                categories={categories}
-                                selectItem={selectItem}
-                            />
-                        </div>
-                        <div className="search-filter">
-                            <SearchBox
-                                // searchValueTitle={searchValueTitle}
-                                searchHelander={searchHelander}
-                            />
-                        </div>
-                    </div>
+        <div className="container">
+            <div className="filter-wrap bg-secondary-70 rounded-2xl px-5 py-7 mb-10 flex flex-col md:flex-row md:justify-between md:items-center">
+                <div className="mb-5 md:mb-0">
+                    <GameCategories
+                        categories={categories}
+                        selectItem={selectItem}
+                    />
                 </div>
-                <div className="flex flex-wrap -mx-6">
-                    <WeaponsContainer data={filterGames}></WeaponsContainer>
+                <div className="md:ml-5">
+                    <SearchBox
+                        searchHelander={searchHelander}
+                    />
                 </div>
             </div>
-        </section>
+                <WeaponsContainer data={filterGames}></WeaponsContainer>
+        </div>
+    </section>
+    
     );
 };
 GamesArea.propTypes = {

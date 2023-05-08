@@ -63,10 +63,20 @@
  
   }
  
-  .in-heading {
-    cursor:pointer;
-  }
-  .in-heading:hover {
+  .weapon-title:hover {
     transition: all 0.2s ease-out;
     font-size: 24px;
   }
+  .weapon-title {
+    cursor:pointer;
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 18px;
+  }
+  
