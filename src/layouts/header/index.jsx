@@ -33,7 +33,7 @@ const Header = ({ data }) => {
             >
                 <div className="container px-4">
                     <nav className="bg-transparent flex justify-between items-center py-3">
-                        <div className="text-3xl font-semibold leading-none">
+                        <div className="">
                             <Logo />
                         </div>
                         <MainMenu allmenuData={data?.menu} />
