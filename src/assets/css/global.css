@@ -9,129 +9,181 @@
 @tailwind utilities;
 
 @layer base {
-    body {
-        @apply font-exo;
-    }
-    .wrapper {
-        @apply text-white;
-    }
-    select {
-        @apply text-black;
-    }
-    a {
-        @apply transition-all;
-    }
-    p {
-        @apply text-body mb-4 last:mb-0;
-    }
-    h1 {
-        @apply font-metal text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl;
-    }
-    h2 {
-        @apply text-28base sm:text-32base md:text-xl xl:text-lg;
-    }
-    h3 {
-        @apply text-base md:text-md;
-    }
-    h4 {
-        @apply text-18base;
-    }
-    h5 {
-        @apply text-base;
-    }
-    h6 {
-        @apply text-sm;
-    }
+  body {
+    @apply font-exo;
+  }
+  .wrapper {
+    @apply text-white;
+  }
+  select {
+    @apply text-black;
+  }
+  a {
+    @apply transition-all;
+  }
+  p {
+    @apply text-body mb-4 last:mb-0;
+  }
+  h1 {
+    @apply font-metal text-xl sm:text-2xl md:text-2xl lg:text-3xl xl:text-4xl;
+  }
+  h2 {
+    @apply text-28base sm:text-32base md:text-xl xl:text-lg;
+  }
+  h3 {
+    @apply text-base md:text-md;
+  }
+  h4 {
+    @apply text-18base;
+  }
+  h5 {
+    @apply text-base;
+  }
+  h6 {
+    @apply text-sm;
+  }
 }
 
 .text-shadow {
-    text-shadow: 3px 3px 0px #b154f0;
+  text-shadow: 3px 3px 0px #b154f0;
 }
 .odd {
-    display: none;
+  display: none;
 }
 .banana2 {
-    background: red;
+  background: red;
 }
 .mobile-menu-open {
-    @apply visible opacity-100;
+  @apply visible opacity-100;
 }
 .mobile-menu-open .OffCanvasContent {
-    @apply visible opacity-70;
+  @apply visible opacity-70;
 }
 .mobile-menu-open .site-mobile-menu {
-    @apply translate-x-0;
+  @apply translate-x-0;
 }
 .our-team-info {
-    background-image: url(../../data/images/others/tam-text-shape.webp);
-    @apply bg-cover left-0 right-0;
+  background-image: url(../../data/images/others/tam-text-shape.webp);
+  @apply bg-cover left-0 right-0;
 }
 .our-team-card:hover .our-team-info,
 .player-card:hover .our-team-info {
-    background-image: url(../../data/images/others/tam-text-shape2.webp);
-    @apply bg-cover;
+  background-image: url(../../data/images/others/tam-text-shape2.webp);
+  @apply bg-cover;
 }
 .players-card-info {
-    background-image: url(../../data/images/others/tam-text-shape2.webp);
-    @apply bg-cover;
+  background-image: url(../../data/images/others/tam-text-shape2.webp);
+  @apply bg-cover;
 }
 .single-funfact-item:nth-child(1)::before {
-    @apply hidden xs:block;
+  @apply hidden xs:block;
 }
 .single-funfact-item:nth-child(2)::before {
-    @apply hidden md:block;
+  @apply hidden md:block;
 }
 .single-funfact-item:nth-child(3)::before {
-    @apply hidden xs:block;
+  @apply hidden xs:block;
 }
 .single-funfact-item:nth-child(1) .counterup {
-    @apply text-yollow-80;
+  @apply text-yollow-80;
 }
 .single-funfact-item:nth-child(2) .counterup {
-    @apply text-turquoise;
+  @apply text-turquoise;
 }
 .single-funfact-item:nth-child(3) .counterup {
-    @apply text-punch;
+  @apply text-punch;
 }
 
 .blog-post-description h3,
 .blog-post-description h4,
 .blog-post-description h5,
 .blog-post-description h6 {
-    @apply font-bold mb-5;
+  @apply font-bold mb-5;
 }
 .blog-post-description ol {
-    @apply mb-8 mt-8 last:mb-0;
+  @apply mb-8 mt-8 last:mb-0;
 }
 .blog-post-description ol li {
-    @apply px-6 py-4 mb-4 last:mb-0 border-secondary-90 bg-secondary-100 transition-all border-2 border-solid block rounded-md;
+  @apply px-6 py-4 mb-4 last:mb-0 border-secondary-90 bg-secondary-100 transition-all border-2 border-solid block rounded-md;
 }
 /*  */
 .breadcrumb-wrap .gatsby-image-wrapper-constrained {
-    width: 100%;
+  width: 100%;
 }
 .breadcrumb__title {
-    @apply text-32base md:text-2xl text-shadow uppercase font-metal;
+  @apply text-32base md:text-2xl text-shadow uppercase font-metal;
 }
 .breadcrumb__list {
-    @apply mt-5;
+  @apply mt-5;
 }
 .breadcrumb__separator {
-    @apply px-2;
+  @apply px-2;
 }
 .breadcrumb__list__item {
-    @apply inline-block uppercase font-bold hover:text-primary;
+  @apply inline-block uppercase font-bold hover:text-primary;
 }
 .breadcrumb__link__active {
-    @apply text-primary pointer-events-none;
+  @apply text-primary pointer-events-none;
 }
 .align-middle {
-    vertical-align: middle !important;
+  vertical-align: middle !important;
 }
 .tab-conversation.active > a {
-    color: #ffff !important;
+  color: #ffff !important;
 }
 .post-content .post-message p,
 .comment-count {
-    @apply text-white;
+  @apply text-white;
+}
+.border-section {
+  border-right: 1px solid white;
+  padding-right: 29px;
+  margin-right: -26px;
+}
+.text-red {
+  color: red;
+}
+.horizone-align-section{
+  width: 89%!important;
+  margin: auto!important;
+}
+
+.form-warp{
+  margin-top: -122px!important;
+}
+@media only screen and (max-width: 768px) {
+  .form-warp{
+    margin-top: 0px!important;
+  }
+  .modal-base{
+    width: 500px!important;
+  }
+  .modal-base a{
+    margin-left: 80%!important;
+    position: fixed!important;
+    margin-top: 15px;
+  }
+}
+.forgot-password-section{
+  padding: 50px!important;
+}
+.forgot-password-heading{
+  font-size: 50px!important;
+  text-align: center!important;
+  margin-top: 50px!important;
+}
+.modal-base{
+  background-color: #0A072A!important;
+  margin-top: 80px!important;
+}
+.modal-base a{
+  background-color: rgb(84 97 240 / var(1));
+  cursor: pointer;
+  position: fixed;
+  margin-left: 88%;
+  margin-top: 15px;
+  line-height: 48px;
+  padding-top: 0px;
+  padding-left: 21px;
+  padding-right: 20px;
 }
