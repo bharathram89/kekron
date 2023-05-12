@@ -7,7 +7,6 @@ import WeaponsBase from "../../../components/weapons/weaponsBase"
 import { Canvas } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
 
-import Weapon from "../../../assets/weaponsJsx/Weapon"
 
 const HeroArea = ({ data }) => {
     return (
