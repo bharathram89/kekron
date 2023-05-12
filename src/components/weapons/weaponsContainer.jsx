@@ -36,6 +36,7 @@ function WeaponsContainer({ data }) {
          <div style={{ flex: '0 0 calc(50% - 10px)', margin: '5px', position: 'relative' }}>
          <div onClick={handleWeaponClick(item)} className="weapon-title" style={{ position: 'absolute', zIndex: '1'}}>
            {item?.name}
+
          </div>
          <Canvas key={item.id}>
            <WeaponsBase glbFile={'glb/' + item.modelUrl + '.glb'} />
@@ -50,11 +51,11 @@ function WeaponsContainer({ data }) {
         nextClassName={"item next "}
         pageClassName={'item pagination-page '}
         previousClassName={"item previous"}
-        pageCount={Math.ceil(data.length / itemsPerPage)}
+        pageCount={Math.ceil(data.length ? data.length :0 / itemsPerPage)}
         nextLabel=">"
         previousLabel="<"
         marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
+        pageRangeDisplayed={4}
         onPageChange={handlePageChange}
         containerClassName={'pagination'}
         activeClassName={'item active'}
