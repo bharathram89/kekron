@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import WeaponsBase from './weaponsBase';
 import { Canvas } from '@react-three/fiber';
 import ReactPaginate from 'react-paginate';
+import { Link } from "gatsby"
 // import { useNavigate } from 'react-router-dom';
 import './weapons.css'
 function WeaponsContainer({ data }) {
@@ -25,21 +26,27 @@ function WeaponsContainer({ data }) {
     setCurrentPage(selected);
   };
 
-  const handleWeaponClick = (item) => () => {
-    console.log('Clicked!', item.id);
-    // navigate('/weapon/'+item.id);
-
-  };
   return (
    <div  style={{display: 'flex', flexWrap: 'wrap', justifyContent: 'center', height: '800px'}}>
       {getWeaponsForPage().map((item) => (
-         <div style={{ flex: '0 0 calc(50% - 10px)', margin: '5px', position: 'relative' }}>
-         <div onClick={handleWeaponClick(item)} className="weapon-title" style={{ position: 'absolute', zIndex: '1'}}>
-           {item?.name}
-
+          <div style={{ flex: '0 0 calc(50% - 10px)', margin: '5px', position: 'relative' }}>
+            
+            <Link to={`/weapon/${item.id}`}>
+          <div
+              className="weapon-title"
+              title="Click to customize!"
+              style={{
+                position: 'absolute',
+                zIndex: '1',
+                backgroundColor: item.custom ? 'green' : undefined
+              }}
+          >
+           {item?.name} <br/>
+           {item?.type} | {item?.subType}
          </div>
+         </Link>
          <Canvas key={item.id}>
-           <WeaponsBase glbFile={'glb/' + item.modelUrl + '.glb'} />
+           <WeaponsBase glbFile={item.miniModelUrl} />
          </Canvas>
        </div>
     
