@@ -33,7 +33,7 @@ exports.onCreateNode = onCreateNode;
 
 exports.createResolvers = createResolvers;
 
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages =  async ({ actions, graphql }) => {
     const { createPage } = actions;
     const templates = {
         matchsPosts: path.resolve("src/templates/match-details/index.jsx"),
@@ -47,6 +47,25 @@ exports.createPages = ({ actions, graphql }) => {
         categoriePosts: path.resolve("src/templates/categories-post/index.jsx"),
         datePage: path.resolve("src/templates/date-post/index.jsx"),
     };
+    try {
+        const response = await fetch("https://api.goloadout.com/weapons");
+        const data = await response.json();
+    
+        // Create pages using the data from the API response
+        data.forEach((weapon) => {
+            console.log(weapon)
+          createPage({
+            path: `/weapon/${weapon.id}`,
+            component: path.resolve(`./src/pages/weapon.jsx`),
+            context: {
+              slug: weapon.id,
+            },
+          });
+        });
+      } catch (error) {
+        console.error(error);
+      }
+
     return graphql(`
         {
             allMatch {
@@ -210,3 +229,29 @@ exports.createPages = ({ actions, graphql }) => {
         //
     });
 };
+// try {
+//     const response = await fetch("https://api.goloadout.com/weapons")
+//     return response.json();
+//   } catch (error) {
+//     console.error(error);
+//   }
+
+          
+
+        // allWeaponDetailJson {
+        //     edges {
+        //       node {
+        //         slug
+        //         id
+        //       }
+        //     }
+        // }
+        // res.data.allWeaponDetailJson.edges.forEach((node) => {
+        //     const { id } = node;
+        //     createPage({
+        //         path: `/weapon/${node.node.slug}`,
+        //         component: path.resolve(`./src/pages/weapon.jsx`),
+        //         context: { id: node.node.slug },
+        //     });
+        //     console.log('hello im here:', node.node.slug); // add this line to log the value of id
+        // });
