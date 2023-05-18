@@ -45,7 +45,7 @@ const HeroArea = ({ data }) => {
 <div className="container">
   <div style={{position: 'relative', paddingTop: '75%'}}>
     <Canvas style={{position: 'absolute', top: 0, left: 0, width: '100%', height: '100%'}} camera={{ fov: 45 }}>
-      <WeaponsBase glbFile="/glb/weapons/sampleModels/CQBMaster-custom-sampleModel.glb"></WeaponsBase>
+      <WeaponsBase glbFile="/glb/weapons/sampleModels/SM_Military_Rifle2samplemodel.glb"></WeaponsBase>
       {/* <PresentationControls speed={4.0} zoom={1.5} >
               <Stage intensity={2}>
                 
