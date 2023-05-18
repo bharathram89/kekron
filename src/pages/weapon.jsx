@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useEffect, useState, Suspense } from "react";
 import PropTypes from "prop-types";
 import SEO from "@components/seo";
 import Layout from "@layout";
 import PageBreadcrumb from "../components/pagebreadcrumb";
 import { normalizedData } from "@utils/functions";
-import FunfactArea from "../container/home/funfact";
-import GamesArea from "../container/games-page/popular-game";
 import { graphql } from 'gatsby'
+import WeaponDetails  from "../container/weaponDetail"
 
 const WeaponPage = ({ data, location, pageContext, weapon }) => {
-    const { id } = pageContext;
-    console.log(data,"data",pageContext,id)
+    const { slug } = pageContext;
+    console.log(data,"data",pageContext,slug)
     const globalContent = normalizedData(data?.allGeneral?.nodes || []);
-    const content = normalizedData(data?.page.content || []);
+
+
+
     return (
         <Layout
             data={{
@@ -26,7 +27,9 @@ const WeaponPage = ({ data, location, pageContext, weapon }) => {
                 location={location}
                 title={weapon}
             />
-           
+
+            <WeaponDetails weaponid={slug}></WeaponDetails>
+          
         </Layout>
     );
 };
@@ -36,12 +39,6 @@ WeaponPage.propTypes = {
     pageContext: PropTypes.object,
     data: PropTypes.shape({
         allGeneral: PropTypes.shape({
-            nodes: PropTypes.arrayOf(PropTypes.shape({})),
-        }),
-        page: PropTypes.shape({
-            content: PropTypes.arrayOf(PropTypes.shape({})),
-        }),
-        allGames: PropTypes.shape({
             nodes: PropTypes.arrayOf(PropTypes.shape({})),
         }),
     }),
@@ -59,16 +56,6 @@ export const query = graphql`
                 ...Footer
             }
         }
-    }
-    page(title: { eq: "home" }, pageType: { eq: homepage }) {
-      content {
-        ...PageContentAll
-      }
-    }
-    allGames(sort: { date: DESC }) {
-      nodes {
-        ...Games
-      }
     }
   }
 `;
