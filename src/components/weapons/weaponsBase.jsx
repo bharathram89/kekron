@@ -2,7 +2,7 @@
 import React, { Suspense } from 'react'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
-
+import  Loader  from './loader'
 function Model(props) {
   console.log(props)
     const { scene, nodes, materials } = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com'+props.glbFile)//'./glb/scar.glb')
@@ -20,13 +20,13 @@ function WeaponsBase(props) {
 
     return (
         <mesh ref={myMesh}>
-          {/* <Suspense fallback={null}> */}
+          <Suspense fallback={<Loader />}>
             <PresentationControls speed={4.0} zoom={1.5} >
               <Stage intensity={2}>
                 <Model glbFile={props.glbFile} scale={2.0} />
               </Stage>
             </PresentationControls>
-          {/* </Suspense> */}
+          </Suspense>
         </mesh>
     )
   }

@@ -3,7 +3,7 @@ import { Canvas } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
 import CQBMaster_custom from '../../assets/weaponJsx/CQBMaster-custom';
 import { getUniqueWeaponAttachmentType, getWeaponAttachments } from "../../service/weapons";
-
+import Loader from '../../components/weapons/loader'
 import "./weaponDetail.css"
 import Button from '../../components/shared/button';
 const WeaponDetails = ({weaponid}) => {
@@ -91,7 +91,7 @@ const WeaponDetails = ({weaponid}) => {
       <mesh>
         <ambientLight intensity={0.6} />
         <spotLight intensity={0.8} position={[30, 30, 50]} />
-        <Suspense fallback={null}>
+        <Suspense fallback={<Loader />}>
           <PresentationControls speed={4.0} zoom={2.0}>
             <Stage intensity={2}>
               <CQBMaster_custom sight={selectedSights} muzzle={selectedMuzzle} />
