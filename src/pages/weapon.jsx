@@ -5,7 +5,7 @@ import Layout from "@layout";
 import PageBreadcrumb from "../components/pagebreadcrumb";
 import { normalizedData } from "@utils/functions";
 import { graphql } from 'gatsby'
-import WeaponDetails  from "../container/weapons/allweapons/weaponDetail"
+import WeaponDetails  from "../container/weapons/weaponDetail"
 
 const WeaponPage = ({ data, location, pageContext, weapon }) => {
     const { slug } = pageContext;

@@ -7,7 +7,7 @@ import {getWeapons} from "../../../service/weapons"
 import WeaponsContainer from "../../../components/weapons/weaponsContainer"
 
 
-const GamesArea = ({ data }) => {
+const AllWeapons = ({ data }) => {
     const [filterGames, setFilterGames] = useState([]);
     const [allWeapons, setallWeapons] = useState([]);
     const fetchGunsData = () => {
@@ -65,7 +65,7 @@ const GamesArea = ({ data }) => {
     
     );
 };
-GamesArea.propTypes = {
+AllWeapons.propTypes = {
     data: PropTypes.shape({
         section_title: PropTypes.shape({
             heading: PropTypes.string,
@@ -82,4 +82,4 @@ GamesArea.propTypes = {
         ),
     }),
 };
-export default GamesArea;
+export default AllWeapons;

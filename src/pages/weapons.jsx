@@ -6,7 +6,7 @@ import PageBreadcrumb from "../components/pagebreadcrumb";
 import { graphql } from "gatsby";
 import { normalizedData } from "@utils/functions";
 import FunfactArea from "../container/home/funfact";
-import GamesArea from "../container/weapons/allweapons";
+import AllWeapons from "../container/weapons/allweapons";
 
 const WeponsPage = ({ data, location, pageContext }) => {
     const globalContent = normalizedData(data?.allGeneral?.nodes || []);
@@ -24,7 +24,7 @@ const WeponsPage = ({ data, location, pageContext }) => {
                 location={location}
                 title="Weapons"
             />
-            <GamesArea
+            <AllWeapons
                 data={{
                     items: data.allGames.nodes,
                 }}
