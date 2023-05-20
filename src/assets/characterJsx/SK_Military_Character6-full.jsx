@@ -6,13 +6,14 @@ Command: npx gltfjsx@6.1.11 SK_Military_Underwear6.glb --transform
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export default function SK_Military_Character6(props) {
-  const { nodes, materials } = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/weapons/fullModels/SK_Military_Underwear6-transformed.glb')
+export default function SK_Military_Character6({muzzle}) {
+  const { nodes, materials } = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/characters/fullModels/SK_Military_Character6-full.glb')
+  console.log(nodes,"ani")
   return (
-    <group {...props} dispose={null}>
+    <group dispose={null}>
       <group position={[1.89, -3.68, 9.74]} rotation={[0, -0.46, 0]}>
         <primitive object={nodes.root} />
-        <skinnedMesh visible={muzzle == 'Flash_Light_(1)'} geometry={nodes.Boots3.geometry} material={materials.Boots3_Skin1} skeleton={nodes.Boots3.skeleton} position={[1.31, 0.14, -0.29]} />
+        <skinnedMesh visible={muzzle == 'Boots3'} geometry={nodes.Boots3.geometry} material={materials.Boots3_Skin1} skeleton={nodes.Boots3.skeleton} position={[1.31, 0.14, -0.29]} />
         <skinnedMesh geometry={nodes.Boots4.geometry} material={materials.Boots_4_5_skin1} skeleton={nodes.Boots4.skeleton} />
         <skinnedMesh geometry={nodes.Boots5.geometry} material={materials.Boots_4_5_skin1} skeleton={nodes.Boots5.skeleton} />
         <skinnedMesh geometry={nodes.CHR_Male_Foot.geometry} material={materials.Legs1_skin1} skeleton={nodes.CHR_Male_Foot.skeleton} />
@@ -44,6 +45,7 @@ export default function SK_Military_Character6(props) {
         <skinnedMesh geometry={nodes.Helmet3_fastering.geometry} material={materials.Helmet3_skin1} skeleton={nodes.Helmet3_fastering.skeleton} />
         <skinnedMesh geometry={nodes.NVG_disabled.geometry} material={materials.Helmet2_skin1} skeleton={nodes.NVG_disabled.skeleton} position={[0, 0, 0.01]} />
         <skinnedMesh geometry={nodes.NVG_enabled.geometry} material={materials.Helmet2_skin1} skeleton={nodes.NVG_enabled.skeleton} position={[0, 0, 0.01]} />
+
         <skinnedMesh geometry={nodes.Vest1_Belt.geometry} material={materials.Vest1_Skin1} skeleton={nodes.Vest1_Belt.skeleton} />
         <skinnedMesh geometry={nodes.Vest2_Bottom.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2_Bottom.skeleton} />
         <skinnedMesh geometry={nodes.Backpack2.geometry} material={materials.Backpack2_skin1} skeleton={nodes.Backpack2.skeleton} />
@@ -90,4 +92,4 @@ export default function SK_Military_Character6(props) {
   )
 }
 
-useGLTF.preload('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/weapons/fullModels/SK_Military_Underwear6-transformed.glb')
+useGLTF.preload('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/characters/fullModels/SK_Military_Character6-full.glb')

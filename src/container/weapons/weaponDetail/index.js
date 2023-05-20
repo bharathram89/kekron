@@ -1,7 +1,8 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber'
-import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
+import { useGLTF, Stage, PresentationControls, OrbitControls } from '@react-three/drei'
 import CQBMaster_custom from '../../../assets/weaponJsx/CQBMaster-custom';
+import SK_Military_Character6 from '../../../assets/characterJsx/SK_Military_Character6-full'
 import { getUniqueWeaponAttachmentType, getWeaponAttachments } from "../../../service/weapons";
 import Loader from '../../../components/weapons/loader'
 import "./weaponDetail.css"
@@ -94,11 +95,13 @@ const WeaponDetails = ({weaponid}) => {
         <Suspense fallback={<Loader />}>
           <PresentationControls speed={4.0} zoom={2.0}>
             <Stage intensity={2}>
-              <CQBMaster_custom sight={selectedSights} muzzle={selectedMuzzle} />
+              <SK_Military_Character6 sight={selectedSights} muzzle={selectedMuzzle} />
+              {/* <CQBMaster_custom sight={selectedSights} muzzle={selectedMuzzle} /> */}
             </Stage>
           </PresentationControls>
         </Suspense>
       </mesh>
+      <OrbitControls></OrbitControls>
     </Canvas>
 
    <div id="dropdowns" style={{ display: 'flex', justifyContent: 'center', borderRadius: '10px', margin: '20px', boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)' }}>

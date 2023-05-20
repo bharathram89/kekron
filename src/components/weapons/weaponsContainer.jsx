@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import WeaponsBase from './weaponsBase';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, OrbitControls } from '@react-three/fiber';
 import ReactPaginate from 'react-paginate';
 import { Link } from "gatsby"
 // import { useNavigate } from 'react-router-dom';
@@ -47,6 +47,7 @@ function WeaponsContainer({ data }) {
          </Link>
          <Canvas key={item.id}>
            <WeaponsBase glbFile={item.miniModelUrl} />
+           <OrbitControls></OrbitControls>
          </Canvas>
        </div>
     
