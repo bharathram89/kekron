@@ -95,8 +95,7 @@ const WeaponDetails = ({weaponid}) => {
         <Suspense fallback={<Loader />}>
           <PresentationControls speed={4.0} zoom={2.0}>
             <Stage intensity={2}>
-              <SK_Military_Character6 sight={selectedSights} muzzle={selectedMuzzle} />
-              {/* <CQBMaster_custom sight={selectedSights} muzzle={selectedMuzzle} /> */}
+              <CQBMaster_custom sight={selectedSights} muzzle={selectedMuzzle} />
             </Stage>
           </PresentationControls>
         </Suspense>

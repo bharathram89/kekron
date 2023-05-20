@@ -3,19 +3,25 @@ import PropTypes from "prop-types";
 import GameCard from "../../../components/games-card";
 import GameCategories from "../../../components/game-categories";
 import SearchBox from "../../../components/search-filter";
-import {getWeapons} from "../../../service/weapons"
+import {getWeapons, getTypesOfGuns} from "../../../service/weapons"
 import WeaponsContainer from "../../../components/weapons/weaponsContainer"
 
 
 const AllWeapons = ({ data }) => {
     const [filterGames, setFilterGames] = useState([]);
     const [allWeapons, setallWeapons] = useState([]);
+    const [types, setTypes] = useState([]);
     const fetchGunsData = () => {
         getWeapons()
         .then(wepData => {
             setFilterGames(wepData)
             setallWeapons(wepData);
             console.log(wepData)
+        })
+        getTypesOfGuns()
+        .then(typesOfWep => {
+            setTypes(typesOfWep)
+            console.log(typesOfWep)
         })
     }
     
@@ -24,10 +30,6 @@ const AllWeapons = ({ data }) => {
     }, [])
     const selectItem = function (e) {
         const selectWeapon = e.target.value;
-        if (selectWeapon === "all") {
-            setFilterGames(allWeapons.items);
-            return;
-        }
         const filteredGames = allWeapons
             .filter((weapon) => weapon.type == selectWeapon.toLowerCase());
         setFilterGames(filteredGames);
@@ -49,7 +51,7 @@ const AllWeapons = ({ data }) => {
             <div className="filter-wrap bg-secondary-70 rounded-2xl px-5 py-7 mb-10 flex flex-col md:flex-row md:justify-between md:items-center">
                 <div className="mb-5 md:mb-0">
                     <GameCategories
-                        categories={categories}
+                        categories={types}
                         selectItem={selectItem}
                     />
                 </div>

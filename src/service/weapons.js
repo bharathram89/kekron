@@ -37,5 +37,16 @@ export const getWeaponAttachments = async (id) => {
     }
 }
 
+export const getTypesOfGuns = async () => {
+  try {
+    const response = await fetch("https://api.goloadout.com/weapon-types")
+    return response.json();
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+
 
 
