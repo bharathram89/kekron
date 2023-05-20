@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import WeaponsBase from './weaponsBase';
 import { Canvas } from '@react-three/fiber';
 import ReactPaginate from 'react-paginate';
 import { Link } from "gatsby"
+import CharacterBase from "./characterBase"
 // import { useNavigate } from 'react-router-dom';
-import './weapons.css'
+// import './weapons.css'
 function CharactersContainer({ data }) {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsPerPage = 4;
@@ -46,7 +46,7 @@ function CharactersContainer({ data }) {
          </div>
          </Link>
          <Canvas key={item.id}>
-           <CharacterBase glbFile={item.miniModelUrl} />
+           <CharacterBase glbFile={item.miniModelUrl} animations={['Idle', 'Walk']} />
          </Canvas>
        </div>
     

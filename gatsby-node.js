@@ -50,21 +50,40 @@ exports.createPages =  async ({ actions, graphql }) => {
     try {
         const response = await fetch("https://api.goloadout.com/weapons");
         const data = await response.json();
-    
+
         // Create pages using the data from the API response
         data.forEach((weapon) => {
             console.log(weapon)
-          createPage({
+            createPage({
             path: `/weapon/${weapon.id}`,
             component: path.resolve(`./src/pages/weapon.jsx`),
             context: {
-              slug: weapon.id,
+                slug: weapon.id,
             },
-          });
+            });
         });
-      } catch (error) {
+    } catch (error) {
         console.error(error);
-      }
+    }
+    
+    try {
+        const response = await fetch("https://api.goloadout.com/characters");
+        const data = await response.json();
+
+        // Create pages using the data from the API response
+        data.forEach((character) => {
+            console.log(character)
+            createPage({
+            path: `/character/${character.id}`,
+            component: path.resolve(`./src/pages/character.jsx`),
+            context: {
+                slug: character.id,
+            },
+            });
+        });
+    } catch (error) {
+        console.error(error);
+    }
 
     return graphql(`
         {

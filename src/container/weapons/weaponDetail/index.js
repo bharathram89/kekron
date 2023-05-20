@@ -2,9 +2,8 @@ import React, { useEffect, useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls, OrbitControls } from '@react-three/drei'
 import CQBMaster_custom from '../../../assets/weaponJsx/CQBMaster-custom';
-import SK_Military_Character6 from '../../../assets/characterJsx/SK_Military_Character6-full'
 import { getUniqueWeaponAttachmentType, getWeaponAttachments } from "../../../service/weapons";
-import Loader from '../../../components/weapons/loader'
+import Loader from '../../../components/loadingidicator/loader'
 import "./weaponDetail.css"
 import Button from '../../../components/shared/button';
 const WeaponDetails = ({weaponid}) => {

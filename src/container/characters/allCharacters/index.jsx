@@ -4,7 +4,7 @@ import GameCard from "../../../components/games-card";
 import GameCategories from "../../../components/game-categories";
 import SearchBox from "../../../components/search-filter";
 import {getCharacters, getCharactersTypes} from "../../../service/characters"
-import WeaponsContainer from "../../../components/weapons/weaponsContainer"
+import CharactersContainer from "../../../components/characters/characterContainers"
 
 
 const AllCharacters = ({ data }) => {
@@ -59,7 +59,8 @@ const AllCharacters = ({ data }) => {
                     />
                 </div>
             </div>
-                <WeaponsContainer data={filterCharacters}></WeaponsContainer>
+                <CharactersContainer data={filterCharacters}></CharactersContainer>
+
         </div>
     </section>
     

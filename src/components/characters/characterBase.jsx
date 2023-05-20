@@ -1,36 +1,63 @@
-
-import React, { Suspense } from 'react'
-import { Canvas, useFrame } from '@react-three/fiber'
-import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
-import  Loader  from './loader'
-
+import React, { Suspense, useRef, useEffect } from 'react';
+import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import { useGLTF, Stage, PresentationControls, useAnimations } from '@react-three/drei';
+import Loader from '../loadingidicator/loader';
 
 function Model(props) {
-  console.log(props)
-    const { scene, nodes, materials } = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com'+props.glbFile)//'./glb/scar.glb')
-    return <primitive object={scene} {...props} />
-  }
-  
+  const { scene } = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com' + props.glbFile);
+  return <primitive object={scene} {...props} />;
+}
+
 function CharacterBase(props) {
-    //https://codesandbox.io/s/staging-models-forked-up6l6v?file=/src/App.js:489-494 
-    const myMesh = React.useRef();
+  const myMesh = useRef();
+  // const { actions } = useAnimations(props.animations);
 
-    useFrame(({ clock }) => {
-      const a = clock.getElapsedTime();
-      myMesh.current.rotation.y = a;
-    });
+  // useEffect(() => {
+  //   actions && actions.idle.play(); // Play the 'idle' animation
+  // }, [actions]);
 
-    return (
-        <mesh ref={myMesh}>
-          <Suspense fallback={<Loader />}>
-            <PresentationControls speed={4.0} zoom={1.5} >
-              <Stage intensity={2}>
-                <Model glbFile={props.glbFile} scale={2.0} />
-              </Stage>
-            </PresentationControls>
-          </Suspense>
-        </mesh>
-    )
-  }
+  return (
+    <mesh ref={myMesh}>
+      <Suspense fallback={<Loader />}>
+        <PresentationControls speed={4.0} zoom={1.5}>
+          <Stage intensity={2}>
+            <Model glbFile={props.glbFile} scale={2.0} />
+          </Stage>
+        </PresentationControls>
+      </Suspense>
+    </mesh>
+  );
+}
 
 export default CharacterBase;
+
+
+
+
+
+
+  // const gltf = useFBX('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/Idle.fbx'); //useLoader(FBXLoader, "https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/Idle.glb")
+//   const fbx = useFBX('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/Idle.fbx')
+
+//   const gltf = useLoader(GLTFLoader, 'https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/Idle.glb'); // Load the "idle.glb" file
+// console.log(gltf,"glasdf")
+//   const modelAnimations = useAnimations(fbx.animations);
+
+//   useEffect(() => {
+//     modelAnimations.actions[modelAnimations.names[0]].play(); // Play the first animation in the array
+//   }, [modelAnimations]);
+
+// function useAnimations(animations) {
+//   const { current: mixer } = useRef(new THREE.AnimationMixer());
+//   useEffect(() => {
+//     if (animations && animations.length > 0) {
+//       animations.forEach((clip) => {
+//         const action = mixer.clipAction(clip);
+//         action.play();
+//       });
+//     }
+//     return () => mixer.stopAllAction();
+//   }, [animations, mixer]);
+//   useFrame((state, delta) => mixer.update(delta));
+//   return mixer;
+// }
