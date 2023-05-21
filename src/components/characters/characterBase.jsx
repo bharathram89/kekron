@@ -10,12 +10,6 @@ function Model(props) {
 
 function CharacterBase(props) {
   const myMesh = useRef();
-  // const { actions } = useAnimations(props.animations);
-
-  // useEffect(() => {
-  //   actions && actions.idle.play(); // Play the 'idle' animation
-  // }, [actions]);
-
   return (
     <mesh ref={myMesh}>
       <Suspense fallback={<Loader />}>
@@ -30,34 +24,3 @@ function CharacterBase(props) {
 }
 
 export default CharacterBase;
-
-
-
-
-
-
-  // const gltf = useFBX('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/Idle.fbx'); //useLoader(FBXLoader, "https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/Idle.glb")
-//   const fbx = useFBX('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/Idle.fbx')
-
-//   const gltf = useLoader(GLTFLoader, 'https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/Idle.glb'); // Load the "idle.glb" file
-// console.log(gltf,"glasdf")
-//   const modelAnimations = useAnimations(fbx.animations);
-
-//   useEffect(() => {
-//     modelAnimations.actions[modelAnimations.names[0]].play(); // Play the first animation in the array
-//   }, [modelAnimations]);
-
-// function useAnimations(animations) {
-//   const { current: mixer } = useRef(new THREE.AnimationMixer());
-//   useEffect(() => {
-//     if (animations && animations.length > 0) {
-//       animations.forEach((clip) => {
-//         const action = mixer.clipAction(clip);
-//         action.play();
-//       });
-//     }
-//     return () => mixer.stopAllAction();
-//   }, [animations, mixer]);
-//   useFrame((state, delta) => mixer.update(delta));
-//   return mixer;
-// }

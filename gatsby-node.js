@@ -47,6 +47,9 @@ exports.createPages =  async ({ actions, graphql }) => {
         categoriePosts: path.resolve("src/templates/categories-post/index.jsx"),
         datePage: path.resolve("src/templates/date-post/index.jsx"),
     };
+    /////////////////////////
+    //weapon page creation//
+    /////////////////////////
     try {
         const response = await fetch("https://api.goloadout.com/weapons");
         const data = await response.json();
@@ -66,6 +69,9 @@ exports.createPages =  async ({ actions, graphql }) => {
         console.error(error);
     }
     
+    /////////////////////////
+    //character page creation//
+    /////////////////////////
     try {
         const response = await fetch("https://api.goloadout.com/characters");
         const data = await response.json();

@@ -92,11 +92,11 @@ const WeaponDetails = ({weaponid}) => {
         <ambientLight intensity={0.6} />
         <spotLight intensity={0.8} position={[30, 30, 50]} />
         <Suspense fallback={<Loader />}>
-          <PresentationControls speed={4.0} zoom={2.0}>
+          {/* <PresentationControls speed={4.0} zoom={2.0}> */}
             <Stage intensity={2}>
               <CQBMaster_custom sight={selectedSights} muzzle={selectedMuzzle} />
             </Stage>
-          </PresentationControls>
+          {/* </PresentationControls> */}
         </Suspense>
       </mesh>
       <OrbitControls></OrbitControls>

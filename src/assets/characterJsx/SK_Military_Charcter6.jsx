@@ -20,14 +20,67 @@ export default function SK_Military_Character6(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="SK_Military_Underwear6">
-        <group name="SK_Military_Underwear6_1" position={[-2.25, -3.91, 14.68]} rotation={[0, 0.17, 0]}>
-          <group name="Decals" />
+        <group name="SK_Military_Underwear6_1" position={[-2.07, -4.15, 14.65]} rotation={[0, 0.03, 0]}>
+          <group name="Decals">
+            <skinnedMesh name="Decal_Arab" geometry={nodes.Decal_Arab.geometry} material={materials.Decals} skeleton={nodes.Decal_Arab.skeleton} />
+            <skinnedMesh name="Decal_Carabin" geometry={nodes.Decal_Carabin.geometry} material={materials.Decals} skeleton={nodes.Decal_Carabin.skeleton} />
+            <skinnedMesh name="Decal_China" geometry={nodes.Decal_China.geometry} material={materials.Decals} skeleton={nodes.Decal_China.skeleton} />
+            <skinnedMesh name="Decal_FBI" geometry={nodes.Decal_FBI.geometry} material={materials.Decals} skeleton={nodes.Decal_FBI.skeleton} />
+            <skinnedMesh name="Decal_FSB" geometry={nodes.Decal_FSB.geometry} material={materials.Decals} skeleton={nodes.Decal_FSB.skeleton} />
+            <skinnedMesh name="Decal_Gendarm" geometry={nodes.Decal_Gendarm.geometry} material={materials.Decals} skeleton={nodes.Decal_Gendarm.skeleton} />
+            <skinnedMesh name="Decal_India" geometry={nodes.Decal_India.geometry} material={materials.Decals} skeleton={nodes.Decal_India.skeleton} />
+            <skinnedMesh name="Decal_Medic" geometry={nodes.Decal_Medic.geometry} material={materials.Decals} skeleton={nodes.Decal_Medic.skeleton} />
+            <skinnedMesh name="Decal_Police" geometry={nodes.Decal_Police.geometry} material={materials.Decals} skeleton={nodes.Decal_Police.skeleton} />
+            <skinnedMesh name="Decal_Policia" geometry={nodes.Decal_Policia.geometry} material={materials.Decals} skeleton={nodes.Decal_Policia.skeleton} />
+            <skinnedMesh name="Decal_Polis" geometry={nodes.Decal_Polis.geometry} material={materials.Decals} skeleton={nodes.Decal_Polis.skeleton} />
+            <skinnedMesh name="Decal_Polisi" geometry={nodes.Decal_Polisi.geometry} material={materials.Decals} skeleton={nodes.Decal_Polisi.skeleton} />
+            <skinnedMesh name="Decal_Polizei" geometry={nodes.Decal_Polizei.geometry} material={materials.Decals} skeleton={nodes.Decal_Polizei.skeleton} />
+            <skinnedMesh name="Decal_Polizia" geometry={nodes.Decal_Polizia.geometry} material={materials.Decals} skeleton={nodes.Decal_Polizia.skeleton} />
+            <skinnedMesh name="Decal_PRESS" geometry={nodes.Decal_PRESS.geometry} material={materials.Decals} skeleton={nodes.Decal_PRESS.skeleton} />
+            <skinnedMesh name="Decal_Rus" geometry={nodes.Decal_Rus.geometry} material={materials.Decals} skeleton={nodes.Decal_Rus.skeleton} />
+            <skinnedMesh name="Decal_Skull" geometry={nodes.Decal_Skull.geometry} material={materials.Decals} skeleton={nodes.Decal_Skull.skeleton} />
+            <skinnedMesh name="Decal_UN" geometry={nodes.Decal_UN.geometry} material={materials.Decals} skeleton={nodes.Decal_UN.skeleton} />
+          </group>
           <group name="Military" />
           <group name="Outfits">
             <group name="Outfit1">
               <skinnedMesh name="Outfit1_1" geometry={nodes.Outfit1_1.geometry} material={materials.Vest2_skin1} skeleton={nodes.Outfit1_1.skeleton} />
               <skinnedMesh name="Outfit1_2" geometry={nodes.Outfit1_2.geometry} material={materials.Equip2_skin1} skeleton={nodes.Outfit1_2.skeleton} />
               <skinnedMesh name="Outfit1_3" geometry={nodes.Outfit1_3.geometry} material={materials.Pouches1_Skin1} skeleton={nodes.Outfit1_3.skeleton} />
+            </group>
+            <group name="Outfit2">
+              <skinnedMesh name="Outfit2_1" geometry={nodes.Outfit2_1.geometry} material={materials.Pouches1_Skin1} skeleton={nodes.Outfit2_1.skeleton} />
+              <skinnedMesh name="Outfit2_2" geometry={nodes.Outfit2_2.geometry} material={materials.Pistol1_skin1} skeleton={nodes.Outfit2_2.skeleton} />
+              <skinnedMesh name="Outfit2_3" geometry={nodes.Outfit2_3.geometry} material={materials.Equip2_skin1} skeleton={nodes.Outfit2_3.skeleton} />
+            </group>
+            <group name="Outfit3">
+              <skinnedMesh name="Outfit3_1" geometry={nodes.Outfit3_1.geometry} material={materials.Pouches1_Skin1} skeleton={nodes.Outfit3_1.skeleton} />
+              <skinnedMesh name="Outfit3_2" geometry={nodes.Outfit3_2.geometry} material={materials.Equip2_skin1} skeleton={nodes.Outfit3_2.skeleton} />
+            </group>
+            <group name="Outfit4">
+              <skinnedMesh name="Outfit4_1" geometry={nodes.Outfit4_1.geometry} material={materials.Pouches1_Skin1} skeleton={nodes.Outfit4_1.skeleton} />
+              <skinnedMesh name="Outfit4_2" geometry={nodes.Outfit4_2.geometry} material={materials.Equip2_skin1} skeleton={nodes.Outfit4_2.skeleton} />
+              <skinnedMesh name="Outfit4_3" geometry={nodes.Outfit4_3.geometry} material={materials.Vest2_skin1} skeleton={nodes.Outfit4_3.skeleton} />
+            </group>
+            <skinnedMesh name="Outfit5" geometry={nodes.Outfit5.geometry} material={materials.Pouches1_Skin1} skeleton={nodes.Outfit5.skeleton} />
+            <group name="Outfit6">
+              <skinnedMesh name="Outfit6_1" geometry={nodes.Outfit6_1.geometry} material={materials.Vest2_skin1} skeleton={nodes.Outfit6_1.skeleton} />
+              <skinnedMesh name="Outfit6_2" geometry={nodes.Outfit6_2.geometry} material={materials.Equip2_skin1} skeleton={nodes.Outfit6_2.skeleton} />
+              <skinnedMesh name="Outfit6_3" geometry={nodes.Outfit6_3.geometry} material={materials.Pouches1_Skin1} skeleton={nodes.Outfit6_3.skeleton} />
+            </group>
+            <group name="Outfit7">
+              <skinnedMesh name="Outfit7_1" geometry={nodes.Outfit7_1.geometry} material={materials.Pouches1_Skin1} skeleton={nodes.Outfit7_1.skeleton} />
+              <skinnedMesh name="Outfit7_2" geometry={nodes.Outfit7_2.geometry} material={materials.Equip2_skin1} skeleton={nodes.Outfit7_2.skeleton} />
+              <skinnedMesh name="Outfit7_3" geometry={nodes.Outfit7_3.geometry} material={materials.Pistol1_skin1} skeleton={nodes.Outfit7_3.skeleton} />
+            </group>
+            <group name="Outfit8">
+              <skinnedMesh name="Outfit8_1" geometry={nodes.Outfit8_1.geometry} material={materials.Pouches1_Skin1} skeleton={nodes.Outfit8_1.skeleton} />
+              <skinnedMesh name="Outfit8_2" geometry={nodes.Outfit8_2.geometry} material={materials.Equip2_skin1} skeleton={nodes.Outfit8_2.skeleton} />
+            </group>
+            <group name="Outfit9">
+              <skinnedMesh name="Outfit9_1" geometry={nodes.Outfit9_1.geometry} material={materials.Pouches1_Skin1} skeleton={nodes.Outfit9_1.skeleton} />
+              <skinnedMesh name="Outfit9_2" geometry={nodes.Outfit9_2.geometry} material={materials.Equip2_skin1} skeleton={nodes.Outfit9_2.skeleton} />
+              <skinnedMesh name="Outfit9_3" geometry={nodes.Outfit9_3.geometry} material={materials.Pistol1_skin1} skeleton={nodes.Outfit9_3.skeleton} />
             </group>
           </group>
           <group name="Radio">

@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber'
-import { useGLTF, Stage, PresentationControls } from '@react-three/drei'
+import { useGLTF, Stage, PresentationControls, OrbitControls } from '@react-three/drei'
 import CQBMaster_custom from '../../../assets/weaponJsx/CQBMaster-custom';
 import { getUniqueWeaponAttachmentType, getWeaponAttachments } from "../../../service/weapons";
 import Loader from '../../../components/loadingidicator/loader'
@@ -85,16 +85,18 @@ const CharacterDetail = ({characterid}) => {
     <Canvas style={{ width: '100%', height: '400px', maxWidth: '800px', margin: '20px auto' }}>
       <mesh>
         <ambientLight intensity={0.6} />
-        <spotLight intensity={0.8} position={[30, 30, 50]} />
+        <spotLight intensity={0.8} position={[0, 0, 0]} />
         <Suspense fallback={<Loader />}>
-          <PresentationControls speed={4.0} zoom={2.0}>
+          {/* <PresentationControls speed={4.0} zoom={2.0}> */}
             <Stage intensity={2}>
               <SK_Military_Character6 />
             </Stage>
-          </PresentationControls>
+          {/* </PresentationControls> */}
         </Suspense>
       </mesh>
+      <OrbitControls></OrbitControls>
     </Canvas>
+
 
    {/* <div id="dropdowns" style={{ display: 'flex', justifyContent: 'center', borderRadius: '10px', margin: '20px', boxShadow: '0 0 20px rgba(0, 0, 0, 0.3)' }}>
         <a style={uniqueAttachments.some(item => item.trim().toLowerCase() === 'magazine') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
