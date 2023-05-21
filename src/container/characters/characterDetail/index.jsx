@@ -2,7 +2,7 @@ import React, { useEffect, useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls, OrbitControls } from '@react-three/drei'
 import CQBMaster_custom from '../../../assets/weaponJsx/CQBMaster-custom';
-import { getUniqueWeaponAttachmentType, getWeaponAttachments } from "../../../service/weapons";
+import { getUniqueOutfitOptionType, getCharacterOutfits } from "../../../service/characters";
 import Loader from '../../../components/loadingidicator/loader'
 import SK_Military_Character6 from '../../../assets/characterJsx/SK_Military_Charcter6'
 // import "./weaponDetail.css"
@@ -15,35 +15,34 @@ const CharacterDetail = ({characterid}) => {
     // const [selectedMag, setselectedMag] = useState(null);
     // const [selectedUnderbarrel, setselectedUnderbarrel] = useState(null);
     // const [selectedMuzzle, setselectedMuzzle] = useState(null);
-    // const [attachmentData, setattachmentData] = useState(null);
+    const [outfitData, setOutfitData] = useState(null);
 
-    // const [uniqueAttachments, setUniqueAttachments] = useState([]);
+    const [uniqueOutfits, setUniqueOutfits] = useState([]);
 
-    // const fetchGunData = () => {
-    //     getUniqueWeaponAttachmentType(characterid)
-    //     .then(uniqueAttachments => {
-    //         setUniqueAttachments(uniqueAttachments);
-    //         console.log(uniqueAttachments)
-    //     })
-    //     getWeaponAttachments(characterid)
-    //     .then(allAttachments => {
-    //         let groupedAttachments = allAttachments.reduce((acc, curr) => {
-    //             if (acc[curr.type]) {
-    //               acc[curr.type].push(curr);
-    //             } else {
-    //               acc[curr.type] = [curr];
-    //             }
-    //             return acc;
-    //           }, {});
+    const fetchCharacterData = () => {
+        getUniqueOutfitOptionType(characterid)
+        .then(uniqueOutfits => {
+            setUniqueOutfits(uniqueOutfits);
+            console.log(uniqueOutfits)
+        })
+        getCharacterOutfits(characterid)
+        .then(allOutfits => {
+            let groupedAttachments = allOutfits.reduce((acc, curr) => {
+                if (acc[curr.outfit_type]) {
+                  acc[curr.outfit_type].push(curr);
+                } else {
+                  acc[curr.outfit_type] = [curr];
+                }
+                return acc;
+              }, {});
 
-    //         setattachmentData(groupedAttachments);
-    //         setselectedMuzzle(groupedAttachments.Muzzle[1].name)
-    //         console.log(groupedAttachments)
-    //     })
-    // }
-    // useEffect(() => {
-    //     fetchGunData()
-    // }, [])
+            setOutfitData(groupedAttachments);
+            console.log(groupedAttachments)
+        })
+    }
+    useEffect(() => {
+        fetchCharacterData()
+    }, [])
 
 
     

@@ -1,11 +1,11 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls, OrbitControls } from '@react-three/drei'
-import CQBMaster_custom from '../../../assets/weaponJsx/CQBMaster-custom';
 import { getUniqueWeaponAttachmentType, getWeaponAttachments } from "../../../service/weapons";
 import Loader from '../../../components/loadingidicator/loader'
 import "./weaponDetail.css"
 import Button from '../../../components/shared/button';
+import SwitchWeapon from './weaponSwitcher'
 const WeaponDetails = ({weaponid}) => {
 
 
@@ -42,7 +42,21 @@ const WeaponDetails = ({weaponid}) => {
     }
     
     
-
+    const getWeapon = (weaponid) => {
+        console.log(weaponid,"weaponid stuff")
+        if(weaponid){
+            const Switcher = SwitchWeapon[weaponid];
+            return (
+                <Switcher
+                key={weaponid} // or something unique
+                sight={selectedSights} 
+                muzzle={selectedMuzzle}
+                // {...section.fields}
+                />
+            );
+        }
+       
+    }
     useEffect(() => {
         fetchGunData()
     }, [])
@@ -94,7 +108,9 @@ const WeaponDetails = ({weaponid}) => {
         <Suspense fallback={<Loader />}>
           {/* <PresentationControls speed={4.0} zoom={2.0}> */}
             <Stage intensity={2}>
-              <CQBMaster_custom sight={selectedSights} muzzle={selectedMuzzle} />
+              {/* <CQBMaster_custom sight={selectedSights} muzzle={selectedMuzzle} /> */}
+                    {getWeapon(weaponid)}
+              
             </Stage>
           {/* </PresentationControls> */}
         </Suspense>

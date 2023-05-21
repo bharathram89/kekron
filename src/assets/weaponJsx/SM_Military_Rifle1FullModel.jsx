@@ -6,9 +6,9 @@ Command: npx gltfjsx@6.1.11 SM_Military_Rifle1FullModel.glb --transform
 import React, { useRef } from 'react'
 import { useGLTF, useAnimations } from '@react-three/drei'
 
-export function Model(props) {
+export default function SM_Military_Rifle1FullModel(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/SM_Military_Rifle1FullModel-transformed.glb')
+  const { nodes, materials, animations } = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/weapons/fullModels/SM_Military_Rifle1FullModel-transformed.glb')
   const { actions } = useAnimations(animations, group)
   return (
     <group ref={group} {...props} dispose={null}>
@@ -147,4 +147,4 @@ export function Model(props) {
   )
 }
 
-useGLTF.preload('/SM_Military_Rifle1FullModel-transformed.glb')
+useGLTF.preload('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/weapons/fullModels/SM_Military_Rifle1FullModel-transformed.glb')
