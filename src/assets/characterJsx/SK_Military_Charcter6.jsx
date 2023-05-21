@@ -15,12 +15,13 @@ export default function SK_Military_Character6(props) {
   });
   const { actions } = useAnimations(uniqueArray, group)
   useEffect(() => {
-    actions && actions.Idle.play(); // Play the 'idle' animation
+    console.log(actions)
+    actions && actions.Jump.play(); // Play the 'idle' animation
   }, [actions]);
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="SK_Military_Underwear6">
-        <group name="SK_Military_Underwear6_1" position={[-2.07, -4.15, 14.65]} rotation={[0, 0.03, 0]}>
+        <group name="SK_Military_Underwear6_1" position={[0, 0, 0]} rotation={[0, 0.0, 0]}>
           <group name="Decals">
             <skinnedMesh name="Decal_Arab" geometry={nodes.Decal_Arab.geometry} material={materials.Decals} skeleton={nodes.Decal_Arab.skeleton} />
             <skinnedMesh name="Decal_Carabin" geometry={nodes.Decal_Carabin.geometry} material={materials.Decals} skeleton={nodes.Decal_Carabin.skeleton} />

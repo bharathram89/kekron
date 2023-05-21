@@ -90,7 +90,7 @@ const WeaponDetails = ({weaponid}) => {
     <Canvas style={{ width: '100%', height: '400px', maxWidth: '800px', margin: '20px auto' }}>
       <mesh>
         <ambientLight intensity={0.6} />
-        <spotLight intensity={0.8} position={[30, 30, 50]} />
+        <spotLight intensity={0.8} position={[0, 0, 0]} />
         <Suspense fallback={<Loader />}>
           {/* <PresentationControls speed={4.0} zoom={2.0}> */}
             <Stage intensity={2}>
