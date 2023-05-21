@@ -166,13 +166,19 @@ function containsObject(obj, list) {
 }
 
 function setStorage(key, value) {
-  localStorage.setItem(key, value);
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(key, value);
+  }
 }
 function getStorage(key) {
-  return localStorage.getItem(key);
+  if (typeof window !== 'undefined') {
+    return localStorage.getItem(key);
+  }
 }
 function removeStorage(key) {
-  localStorage.removeItem(key);
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(key);
+  }
 }
 module.exports = {
   removeStorage,
