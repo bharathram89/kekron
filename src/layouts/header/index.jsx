@@ -6,8 +6,16 @@ import MainMenu from "../../components/menu/main-menu";
 import MobileNavMenu from "../../components/menu/mobile-menu";
 import Button from "../../components/shared/button";
 import { useSticky } from "../../hooks";
+import { useSelector, useDispatch } from 'react-redux';
+import { navigate } from 'gatsby';
+import { LOGOUT } from "../../redux/types/authTypes";
+import { removeStorage } from "../../utils/functions";
 
 const Header = ({ data }) => {
+
+    const dispatch = useDispatch();
+
+    const { isLoggedIn } = useSelector(state => state?.auth);
     // Sticky Header
     const { sticky, headerRef, fixedRef } = useSticky();
 
@@ -18,6 +26,16 @@ const Header = ({ data }) => {
     const ofcanvasHandaler = () => {
         setOfcanvasOpen((prev) => !prev);
     };
+
+    const handleClick = (e) => {
+        e.preventDefault();
+         if(isLoggedIn){
+            removeStorage('userInfo');
+            dispatch({type: LOGOUT})
+         }
+         navigate('/login')
+    }
+
     return (
         <header
             ref={headerRef}
@@ -38,18 +56,18 @@ const Header = ({ data }) => {
                         </div>
                         <MainMenu allmenuData={data?.menu} />
                         <div className="header-right-action flex items-center">
-                            <Button
-                                path="/login"
+                            <button
                                 shape="square2xl"
                                 className="text-white hidden xs:block"
+                                onClick={handleClick}
                             >
-                                SIGN UP
+                                {isLoggedIn ? 'LOGOUT' : 'SIGN UP'}
                                 <StaticImage
                                     className="align-middle ml-3"
                                     src="../../data/images/icons/arrrow-icon2.webp"
                                     alt=""
                                 />
-                            </Button>
+                            </button>
                             <button
                                 onClick={ofcanvasHandaler}
                                 onKeyDown={ofcanvasHandaler}
