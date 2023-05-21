@@ -135,3 +135,13 @@
 .comment-count {
     @apply text-white;
 }
+.validation-error{
+    color: red!important;
+}
+.single-fild input {
+   margin-bottom: 10px !important;
+   margin-top: 10px !important;
+}
+.loader-div {
+    margin-left: 40%;
+}

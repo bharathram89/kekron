@@ -7,6 +7,7 @@
   "dependencies": {
     "classnames": "^2.3.1",
     "disqus-react": "^1.1.2",
+    "formik": "^2.2.9",
     "gatsby": "^5.7.0",
     "gatsby-plugin-breadcrumb": "^12.3.2",
     "gatsby-plugin-google-gtag": "^5.10.0",
@@ -29,11 +30,15 @@
     "react-countup": "^6.3.1",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
+    "react-loading": "^2.0.3",
     "react-modal-video": "^1.2.10",
     "react-portal": "^4.2.1",
+    "react-redux": "^8.0.5",
     "react-visibility-sensor": "^5.1.1",
+    "redux": "^4.2.1",
     "swiper": "^7.1.0",
-    "tailwind-pseudo-elements": "^0.4.0"
+    "tailwind-pseudo-elements": "^0.4.0",
+    "yup": "^1.1.1"
   },
   "devDependencies": {
     "@react-three/drei": "9.58.5",

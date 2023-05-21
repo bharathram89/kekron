@@ -12,6 +12,7 @@ import LatestBlogArea from "../container/home/latest-blog";
 import { graphql } from "gatsby";
 import { normalizedData } from "@utils/functions";
 import FunfactArea from "../container/home/funfact";
+import { useSelector } from 'react-redux'; 
 
 const IndexPage = ({ data }) => {
     const globalContent = normalizedData(data?.allGeneral?.nodes || []);
