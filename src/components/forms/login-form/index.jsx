@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import Button from "../../../components/shared/button";
 import { Link, navigate } from "gatsby";
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { login } from "../../../service/auth";
 import ReactLoading from 'react-loading';
@@ -27,10 +27,9 @@ const LoginForm = () => {
         password: Yup.string().required('Password is required'),
       });
 
-      console.log(isLoggedIn)
       useEffect(() => {
           if(isLoggedIn){
-            //  navigate('/');
+             navigate('/');
           }
       }, [isLoggedIn]);
 
