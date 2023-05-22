@@ -31,11 +31,9 @@ const AllWeapons = ({ data }) => {
     const selectItem = function (e) {
         const selectWeapon = e.target.value;
         const filteredGames = allWeapons
-            .filter((weapon) => weapon.type == selectWeapon.toLowerCase());
+            .filter((weapon) => weapon.type.toLowerCase() == selectWeapon.toLowerCase());
         setFilterGames(filteredGames);
     };
-
-    const categories = ["Rifle", "Shotgun","Pistol","Sniper","Smg"];
 
     // -------------------------
     // Search Box Flter
@@ -43,7 +41,10 @@ const AllWeapons = ({ data }) => {
 
     // const searchValueTitle = data?.items.map((item) => item.title);
     const searchHelander = function (e) {
-        const searchVal = e.target.value;
+        const selectWeapon = e.target.value;
+        const filteredGames = allWeapons
+            .filter((weapon) => weapon.name.toLowerCase().includes(selectWeapon.toLowerCase()) || weapon.subType.toLowerCase().includes(selectWeapon.toLowerCase()) );
+        setFilterGames(filteredGames);
     };
     return (
         <section className="games-section pt-16 md:pt-12 pb-16 md:pb-28">

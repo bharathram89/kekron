@@ -1,7 +1,7 @@
 
 
 //"https://api.goloadout.com"    "http://127.0.0.1:5000"
-let host = "http://127.0.0.1:5000"
+let host = "https://api.goloadout.com"
 export const getCharacters = async () => {
     try {
       const response = await fetch(host+"/characters")

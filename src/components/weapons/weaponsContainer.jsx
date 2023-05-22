@@ -58,7 +58,8 @@ function WeaponsContainer({ data }) {
         nextClassName={"item next "}
         pageClassName={'item pagination-page '}
         previousClassName={"item previous"}
-        pageCount={Math.ceil(data.length ? data.length :0 / itemsPerPage)}
+        // pageCount={Math.ceil(data.length ? data.length :0 / itemsPerPage)}
+        pageCount={Math.ceil((data.length || 0) / itemsPerPage)}
         nextLabel=">"
         previousLabel="<"
         marginPagesDisplayed={2}
