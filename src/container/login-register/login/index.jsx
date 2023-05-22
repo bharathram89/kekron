@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { StaticImage } from "gatsby-plugin-image";
 import SectionTitle from "../../../components/title";
 import LoginForm from "../../../components/forms/login-form";
+import FacebookAuth from "../../../components/social-auth/facebook";
 
 const Login = ({ data }) => {
     return (

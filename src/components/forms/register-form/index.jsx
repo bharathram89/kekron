@@ -9,6 +9,7 @@ import ReactLoading from 'react-loading';
 import { signup } from "../../../service/auth";
 import { setStorage } from "../../../utils/functions";
 import { LOGIN_SUCCESS } from "../../../redux/types/authTypes";
+import FacebookAuth from "../../social-auth/facebook";
 
 
 const initialValues = {
@@ -143,6 +144,7 @@ const RegisterForm = () => {
                     }
                 </Button>
             </div>
+            <FacebookAuth />
             <div className="account-text mt-5 text-center">
                 <p>
                     Already have account, {""}
