@@ -10,7 +10,7 @@ import { setStorage } from "../../../utils/functions";
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
 import { LOGIN_SUCCESS } from '../../../redux/types/authTypes'
-import FacebookAuth from "../../social-auth/facebook";
+import SocialAuth from "../../social-auth";
 
 const initialValues = {
     email: '',
@@ -111,7 +111,7 @@ const LoginForm = () => {
                     }
                 </Button>
             </div>
-            <FacebookAuth />
+            <SocialAuth />
             <div className="account-text mt-5 text-center">
                 <p>
                     Do not have any account,{" "}
