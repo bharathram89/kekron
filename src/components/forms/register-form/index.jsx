@@ -23,7 +23,7 @@ const RegisterForm = () => {
     const validationSchema = Yup.object().shape({
         name: Yup.string().required('Name is required').matches(/^[a-zA-ZÀ-ÿ\s'-]+$/, 'Enter a valid name').min(1).max(35, 'Max 35 characters allowed'),
         email: Yup.string().email('Invalid email address').matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email').required('Email is required'),
-        password: Yup.string().required('Password is required').matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/, 'Password must have one special character, one upper case and one lower case letter').min(6, 'Min 6 characters required'),
+        password: Yup.string().required('Password is required').matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/, 'Password must have one special character, one number,one upper case and one lower case letter').min(6, 'Min 6 characters required'),
         confirmPassword: Yup.string()
         .oneOf([Yup.ref('password'), null], 'Passwords must match')
         .required('Confirm Password is required'),
