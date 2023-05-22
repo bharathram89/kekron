@@ -145,7 +145,9 @@ const RegisterForm = () => {
                     }
                 </Button>
             </div>
-            <SocialAuth />
+            <div className="button text-center">
+                <SocialAuth />
+            </div>
             <div className="account-text mt-5 text-center">
                 <p>
                     Already have account, {""}
