@@ -7,7 +7,7 @@ import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
 export default function SM_Military_Rifle3FullModel(props) {
-  const { nodes, materials } = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/weapons/fullModels/SM_Military_Rifle3full-transformed.glb')
+  const { nodes, materials } = useGLTF('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/weapons/fullModels/SM_Military_Rifle3FullModel-transformed.glb')
   return (
     <group {...props} dispose={null}>
       <group position={[0, 0.52, 0.08]} rotation={[0, Math.PI / 2, 0]} scale={103.99}>
@@ -136,4 +136,4 @@ export default function SM_Military_Rifle3FullModel(props) {
   )
 }
 
-useGLTF.preload('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/weapons/fullModels/SM_Military_Rifle3full-transformed.glb')
+useGLTF.preload('https://ac-dev-s3.s3.us-west-1.amazonaws.com/glb/weapons/fullModels/SM_Military_Rifle3FullModel-transformed.glb')
