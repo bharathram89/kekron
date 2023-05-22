@@ -15,6 +15,7 @@ const WeaponDetails = ({weaponid}) => {
     const [selectedUnderbarrel, setselectedUnderbarrel] = useState(null);
     const [selectedMuzzle, setselectedMuzzle] = useState(null);
     const [attachmentData, setattachmentData] = useState(null);
+    const [selectedSideRail, setselectedSideRail] = useState(null);
 
     const [uniqueAttachments, setUniqueAttachments] = useState([]);
 
@@ -36,14 +37,12 @@ const WeaponDetails = ({weaponid}) => {
               }, {});
 
             setattachmentData(groupedAttachments);
-            setselectedMuzzle(groupedAttachments.Muzzle[1].name)
-            console.log(groupedAttachments)
+            console.log(groupedAttachments,"groupedAttachments")
         })
     }
     
     
     const getWeapon = (weaponid) => {
-        console.log(weaponid,"weaponid stuff")
         if(weaponid){
             const Switcher = SwitchWeapon[weaponid];
             return (
@@ -51,6 +50,9 @@ const WeaponDetails = ({weaponid}) => {
                 key={weaponid} // or something unique
                 sight={selectedSights} 
                 muzzle={selectedMuzzle}
+                underBarrel={selectedUnderbarrel}
+                magazine={selectedMag}
+                sideRail={selectedSideRail}
                 // {...section.fields}
                 />
             );
@@ -69,28 +71,28 @@ const WeaponDetails = ({weaponid}) => {
         <a style={uniqueAttachments.some(item => item.trim().toLowerCase() === 'sight') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Sight</label>
             <br></br><hr></hr>
-            <select id="selectDropdown1" onChange={(e) => setselectedSights(e.target.value)}  style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
-                {attachmentData?.Sight?.forEach(option => (
+            <select id="selectDropdown3" onChange={(e) => setselectedSights(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                <option>None</option>
+                {attachmentData?.Sight?.map(option => (
                     <option key={option.id} value={option.value}>{option.name}</option>
                 ))}
-                {/* <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option> */}
             </select>
         </a>
         <a style={uniqueAttachments.some(item => item.trim().toLowerCase() === 'barrel') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Barrel</label>
             <br></br><hr></hr>
-            <select id="selectDropdown1" style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+            <select id="selectDropdown3" onChange={(e) => setselectedMuzzle(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                <option>None</option>
+                {attachmentData?.Barrel?.map(option => (
+                    <option key={option.id} value={option.value}>{option.name}</option>
+                ))}
             </select>
         </a> 
         <a style={uniqueAttachments.some(item => item.trim().toLowerCase() === 'muzzle') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Muzzle</label>
             <br></br><hr></hr>
-            <select id="selectDropdown1" onChange={(e) => setselectedMuzzle(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+            <select id="selectDropdown3" onChange={(e) => setselectedMuzzle(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                <option>None</option>
                 {attachmentData?.Muzzle?.map(option => (
                     <option key={option.id} value={option.value}>{option.name}</option>
                 ))}
@@ -106,13 +108,9 @@ const WeaponDetails = ({weaponid}) => {
         <ambientLight intensity={0.6} />
         <spotLight intensity={0.8} position={[0, 0, 0]} />
         <Suspense fallback={<Loader />}>
-          {/* <PresentationControls speed={4.0} zoom={2.0}> */}
             <Stage intensity={2}>
-              {/* <CQBMaster_custom sight={selectedSights} muzzle={selectedMuzzle} /> */}
-                    {getWeapon(weaponid)}
-              
+                {getWeapon(weaponid)}
             </Stage>
-          {/* </PresentationControls> */}
         </Suspense>
       </mesh>
       <OrbitControls></OrbitControls>
@@ -122,37 +120,41 @@ const WeaponDetails = ({weaponid}) => {
         <a style={uniqueAttachments.some(item => item.trim().toLowerCase() === 'magazine') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{ margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Magazine</label>
             <br></br><hr></hr>
-            <select id="selectDropdown1" style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+            <select id="selectDropdown3" onChange={(e) => setselectedMag(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                <option>None</option>
+                {attachmentData?.Magazine?.map(option => (
+                    <option key={option.id} value={option.value}>{option.name}</option>
+                ))}
             </select>
         </a>
         <a style={uniqueAttachments.some(item => item.trim().toLowerCase() === 'trigger') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px',padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Trigger</label>
             <br></br><hr></hr>
-            <select id="selectDropdown1" style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+            <select id="selectDropdown3" onChange={(e) => setselectedMuzzle(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                <option>None</option>
+                {attachmentData?.Trigger?.map(option => (
+                    <option key={option.id} value={option.value}>{option.name}</option>
+                ))}
             </select>
         </a>
         <a style={uniqueAttachments.some(item => item.trim().toLowerCase() === 'underbarrel') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Under barrel</label>
             <br></br><hr></hr>
-            <select id="selectDropdown1" style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+            <select id="selectDropdown3" onChange={(e) => setselectedUnderbarrel(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                <option>None</option>
+                {attachmentData?.UnderBarrel?.map(option => (
+                    <option key={option.id} value={option.value}>{option.name}</option>
+                ))}
             </select>
         </a>
-        <a style={uniqueAttachments.some(item => item.trim().toLowerCase() === 'siderail') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
+        <a style={uniqueAttachments.some(item => item.trim().toLowerCase() === 'rightrail') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Side Rail</label>
             <br></br><hr></hr>
-            <select id="selectDropdown1" style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
-                <option value="option1">Option 1</option>
-                <option value="option2">Option 2</option>
-                <option value="option3">Option 3</option>
+            <select id="selectDropdown3" onChange={(e) => setselectedSideRail(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                <option>None</option>
+                {attachmentData?.RightRail?.map(option => (
+                    <option key={option.id} value={option.value}>{option.name}</option>
+                ))}
             </select>
         </a>
 

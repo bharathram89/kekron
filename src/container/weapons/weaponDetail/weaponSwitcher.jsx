@@ -6,8 +6,8 @@ import CQBMaster_custom from '../../../assets/weaponJsx/CQBMaster-custom';
 
 const SwitchWeapon= {
   "1" : CQBMaster_custom,
-  "2" : SM_Military_Rifle1FullModel,
-  "3" : SM_Military_Rifle2FullModel,
+  "2" : SM_Military_Rifle2FullModel,
+  "3" : SM_Military_Rifle1FullModel,
   "4" : SM_Military_Rifle3FullModel
 };
 
