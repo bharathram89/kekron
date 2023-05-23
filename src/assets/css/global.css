@@ -145,3 +145,18 @@
 .loader-div {
     margin-left: 40%;
 }
+.nav-action-btn{
+    background: none;
+    border: 2px solid gray!important;
+    padding: 12px 20px!important;
+}
+.nav-action-btn:hover{
+    color: white!important;
+    background-color: #9A51D7!important;
+}
+.kep-login-facebook{
+    background-color: #9A51D7!important;
+    padding: 12px 15px!important;
+    border-radius: 20px!important;
+    width: 100%!important;
+}
