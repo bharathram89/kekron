@@ -129,7 +129,7 @@ export default function SK_Military_Character6(props) {
             <skinnedMesh name="Gasmask2_1" geometry={nodes.Gasmask2_1.geometry} material={materials.Glass_skin1} skeleton={nodes.Gasmask2_1.skeleton} />
             <skinnedMesh name="Gasmask2_2" geometry={nodes.Gasmask2_2.geometry} material={materials.Gasmask1_skin1} skeleton={nodes.Gasmask2_2.skeleton} />
           </group>
-          <group visible={props.eyewear === 'Goggles2_up'} name="Goggles1">
+          <group visible={props.eyewear === 'Goggles1'} name="Goggles1">
             <skinnedMesh name="Goggles1_1" geometry={nodes.Goggles1_1.geometry} material={materials.Glass_skin1} skeleton={nodes.Goggles1_1.skeleton} />
             <skinnedMesh name="Goggles1_2" geometry={nodes.Goggles1_2.geometry} material={materials.Cap4_skin1} skeleton={nodes.Goggles1_2.skeleton} />
           </group>
@@ -144,14 +144,14 @@ export default function SK_Military_Character6(props) {
           <skinnedMesh visible={props.headset === 'Headset1'} name="Headset1" geometry={nodes.Headset1.geometry} material={materials.Helmet2_skin1} skeleton={nodes.Headset1.skeleton} />
           <skinnedMesh visible={props.headset === 'Headset2'} name="Headset2" geometry={nodes.Headset2.geometry} material={materials.Helmet2_skin1} skeleton={nodes.Headset2.skeleton} />
           <skinnedMesh visible={props.headset === 'Headset3'} name="Headset3" geometry={nodes.Headset3.geometry} material={materials.Helmet2_skin1} skeleton={nodes.Headset3.skeleton} />
-          <skinnedMesh visible={props.headgear === 'Helmet1'} name="Helmet1" geometry={nodes.Helmet1.geometry} material={materials.Cap1_Skin1} skeleton={nodes.Helmet1.skeleton} />
-          <skinnedMesh visible={props.headgear === 'Helmet1'} name="Helmet1_Fastering" geometry={nodes.Helmet1_Fastering.geometry} material={materials.Cap1_Skin1} skeleton={nodes.Helmet1_Fastering.skeleton} />
-          <skinnedMesh visible={props.headgear === 'Helmet1'} name="Helmet1_For_goggles" geometry={nodes.Helmet1_For_goggles.geometry} material={materials.Cap1_Skin1} skeleton={nodes.Helmet1_For_goggles.skeleton} />
-          <skinnedMesh visible={props.headgear === 'Helmet2'} name="Helmet2" geometry={nodes.Helmet2.geometry} material={materials.Helmet2_skin1} skeleton={nodes.Helmet2.skeleton} />
-          <skinnedMesh visible={props.headgear === 'Helmet2'} name="Helmet2_For_goggles" geometry={nodes.Helmet2_For_goggles.geometry} material={materials.Helmet2_skin1} skeleton={nodes.Helmet2_For_goggles.skeleton} position={[0, 0, 0.12]} rotation={[-0.07, 0, 0]} />
-          <skinnedMesh visible={props.headgear === 'Helmet2'} name="Helmet2_fastening" geometry={nodes.Helmet2_fastening.geometry} material={materials.Helmet2_skin1} skeleton={nodes.Helmet2_fastening.skeleton} />
-          <skinnedMesh visible={props.headgear === 'Helmet3'} name="Helmet3" geometry={nodes.Helmet3.geometry} material={materials.Helmet3_skin1} skeleton={nodes.Helmet3.skeleton} />
-          <skinnedMesh visible={props.headgear === 'Helmet3'} name="Helmet3_fastering" geometry={nodes.Helmet3_fastering.geometry} material={materials.Helmet3_skin1} skeleton={nodes.Helmet3_fastering.skeleton} />
+          <skinnedMesh visible={props.headgear === 'Helmet1' || props.headgear === "Helmet1-NVG-Disabled" || props.headgear === "Helmet1-NVG-Enabled"} name="Helmet1" geometry={nodes.Helmet1.geometry} material={materials.Cap1_Skin1} skeleton={nodes.Helmet1.skeleton} />
+          <skinnedMesh visible={props.headgear === 'Helmet1' || props.headgear === "Helmet1-NVG-Disabled" || props.headgear === "Helmet1-NVG-Enabled"} name="Helmet1_Fastering" geometry={nodes.Helmet1_Fastering.geometry} material={materials.Cap1_Skin1} skeleton={nodes.Helmet1_Fastering.skeleton} />
+          <skinnedMesh visible={props.headgear === 'Helmet1' || props.headgear === "Helmet1-NVG-Disabled" || props.headgear === "Helmet1-NVG-Enabled"} name="Helmet1_For_goggles" geometry={nodes.Helmet1_For_goggles.geometry} material={materials.Cap1_Skin1} skeleton={nodes.Helmet1_For_goggles.skeleton} />
+          <skinnedMesh visible={props.headgear === 'Helmet2' || props.headgear === "Helmet2-NVG-Disabled" || props.headgear === "Helmet2-NVG-Enabled"} name="Helmet2" geometry={nodes.Helmet2.geometry} material={materials.Helmet2_skin1} skeleton={nodes.Helmet2.skeleton} />
+          <skinnedMesh visible={props.headgear === 'Helmet2' || props.headgear === "Helmet2-NVG-Disabled" || props.headgear === "Helmet2-NVG-Enabled"} name="Helmet2_For_goggles" geometry={nodes.Helmet2_For_goggles.geometry} material={materials.Helmet2_skin1} skeleton={nodes.Helmet2_For_goggles.skeleton} position={[0, 0, 0.12]} rotation={[-0.07, 0, 0]} />
+          <skinnedMesh visible={props.headgear === 'Helmet2' || props.headgear === "Helmet2-NVG-Disabled" || props.headgear === "Helmet2-NVG-Enabled"} name="Helmet2_fastening" geometry={nodes.Helmet2_fastening.geometry} material={materials.Helmet2_skin1} skeleton={nodes.Helmet2_fastening.skeleton} />
+          <skinnedMesh visible={props.headgear === 'Helmet3' || props.headgear === 'Helmet3-closed' || props.headgear === 'Helmet3-open'} name="Helmet3" geometry={nodes.Helmet3.geometry} material={materials.Helmet3_skin1} skeleton={nodes.Helmet3.skeleton} />
+          <skinnedMesh visible={props.headgear === 'Helmet3' || props.headgear === 'Helmet3-closed' || props.headgear === 'Helmet3-open'} name="Helmet3_fastering" geometry={nodes.Helmet3_fastering.geometry} material={materials.Helmet3_skin1} skeleton={nodes.Helmet3_fastering.skeleton} />
           <group name="Helmet3_Visor_close">
             <skinnedMesh visible={props.headgear === 'Helmet3-closed'} name="Helmet3_Visor_close_1" geometry={nodes.Helmet3_Visor_close_1.geometry} material={materials.Helmet3_skin1} skeleton={nodes.Helmet3_Visor_close_1.skeleton} />
             <skinnedMesh visible={props.headgear === 'Helmet3-closed'} name="Helmet3_Visor_close_2" geometry={nodes.Helmet3_Visor_close_2.geometry} material={materials.Glass_skin1} skeleton={nodes.Helmet3_Visor_close_2.skeleton} />
@@ -160,28 +160,28 @@ export default function SK_Military_Character6(props) {
             <skinnedMesh visible={props.headgear === 'Helmet3-open'} name="Helmet3_Visor_open_1" geometry={nodes.Helmet3_Visor_open_1.geometry} material={materials.Helmet3_skin1} skeleton={nodes.Helmet3_Visor_open_1.skeleton} />
             <skinnedMesh visible={props.headgear === 'Helmet3-open'} name="Helmet3_Visor_open_2" geometry={nodes.Helmet3_Visor_open_2.geometry} material={materials.Glass_skin1} skeleton={nodes.Helmet3_Visor_open_2.skeleton} />
           </group>
-          <skinnedMesh name="Holster1_empty" geometry={nodes.Holster1_empty.geometry} material={materials.Equip2_skin1} skeleton={nodes.Holster1_empty.skeleton} />
-          <group name="Holster1_Pistol__for_Pants2_5_">
+          <skinnedMesh visible={props.extras === 'Holster1_empty'} name="Holster1_empty" geometry={nodes.Holster1_empty.geometry} material={materials.Equip2_skin1} skeleton={nodes.Holster1_empty.skeleton} />
+          <group visible={props.extras === 'Holster1_Pistol__for_Pants2_5_'} name="Holster1_Pistol__for_Pants2_5_">
             <skinnedMesh name="Holster1_Pistol__for_Pants2_5__1" geometry={nodes.Holster1_Pistol__for_Pants2_5__1.geometry} material={materials.Equip2_skin1} skeleton={nodes.Holster1_Pistol__for_Pants2_5__1.skeleton} />
             <skinnedMesh name="Holster1_Pistol__for_Pants2_5__2" geometry={nodes.Holster1_Pistol__for_Pants2_5__2.geometry} material={materials.Pistol1_skin1} skeleton={nodes.Holster1_Pistol__for_Pants2_5__2.skeleton} />
           </group>
-          <skinnedMesh name="Kneepad1_Left" geometry={nodes.Kneepad1_Left.geometry} material={materials.Pants1_Skin1} skeleton={nodes.Kneepad1_Left.skeleton} />
-          <skinnedMesh name="Kneepad1_Right" geometry={nodes.Kneepad1_Right.geometry} material={materials.Pants1_Skin1} skeleton={nodes.Kneepad1_Right.skeleton} />
+          <skinnedMesh visible={props.extras === 'Kneepad'} name="Kneepad1_Left" geometry={nodes.Kneepad1_Left.geometry} material={materials.Pants1_Skin1} skeleton={nodes.Kneepad1_Left.skeleton} />
+          <skinnedMesh visible={props.extras === 'Kneepad'} name="Kneepad1_Right" geometry={nodes.Kneepad1_Right.geometry} material={materials.Pants1_Skin1} skeleton={nodes.Kneepad1_Right.skeleton} />
           <skinnedMesh visible={props.headgear === "Helmet1-NVG-Disabled" || props.headgear === "Helmet2-NVG-Disabled" } name="NVG_disabled" geometry={nodes.NVG_disabled.geometry} material={materials.Helmet2_skin1} skeleton={nodes.NVG_disabled.skeleton} position={[0, 0, 0.01]} />
           <skinnedMesh visible={props.headgear === "Helmet1-NVG-Enabled" || props.headgear === "Helmet2-NVG-Enabled" } name="NVG_enabled" geometry={nodes.NVG_enabled.geometry} material={materials.Helmet2_skin1} skeleton={nodes.NVG_enabled.skeleton} position={[0, 0, 0.01]} />
-          <skinnedMesh name="Pants1" geometry={nodes.Pants1.geometry} material={materials.Pants1_Skin1} skeleton={nodes.Pants1.skeleton} position={[9.29, -0.94, 0.02]} />
-          <skinnedMesh name="Pants4" geometry={nodes.Pants4.geometry} material={materials.Pants4_skin1} skeleton={nodes.Pants4.skeleton} />
-          <skinnedMesh name="Pants5" geometry={nodes.Pants5.geometry} material={materials.Pants5_skin1} skeleton={nodes.Pants5.skeleton} />
-          <skinnedMesh name="Shirt4" geometry={nodes.Shirt4.geometry} material={materials.Shirt4_skin1} skeleton={nodes.Shirt4.skeleton} />
-          <skinnedMesh name="Shirt5" geometry={nodes.Shirt5.geometry} material={materials.Shirt5_skin1} skeleton={nodes.Shirt5.skeleton} />
-          <skinnedMesh name="Shirt6" geometry={nodes.Shirt6.geometry} material={materials.Shirt6_skin1} skeleton={nodes.Shirt6.skeleton} />
-          <skinnedMesh name="Vest1" geometry={nodes.Vest1.geometry} material={materials.Vest1_Skin1} skeleton={nodes.Vest1.skeleton} />
-          <skinnedMesh name="Vest1_Belt" geometry={nodes.Vest1_Belt.geometry} material={materials.Vest1_Skin1} skeleton={nodes.Vest1_Belt.skeleton} />
-          <skinnedMesh name="Vest2" geometry={nodes.Vest2.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2.skeleton} />
-          <skinnedMesh name="Vest2_Bottom" geometry={nodes.Vest2_Bottom.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2_Bottom.skeleton} />
-          <skinnedMesh name="Vest2_collar" geometry={nodes.Vest2_collar.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2_collar.skeleton} />
-          <skinnedMesh name="Vest2_Shoulder_L" geometry={nodes.Vest2_Shoulder_L.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2_Shoulder_L.skeleton} />
-          <skinnedMesh name="Vest2_Shoulder_R" geometry={nodes.Vest2_Shoulder_R.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2_Shoulder_R.skeleton} />
+          <skinnedMesh visible={props.pant === 'Pants1'} name="Pants1" geometry={nodes.Pants1.geometry} material={materials.Pants1_Skin1} skeleton={nodes.Pants1.skeleton} position={[9.29, -0.94, 0.02]} />
+          <skinnedMesh visible={props.pant === 'Pants4'} name="Pants4" geometry={nodes.Pants4.geometry} material={materials.Pants4_skin1} skeleton={nodes.Pants4.skeleton} />
+          <skinnedMesh visible={props.pant === 'Pants5'} name="Pants5" geometry={nodes.Pants5.geometry} material={materials.Pants5_skin1} skeleton={nodes.Pants5.skeleton} />
+          <skinnedMesh visible={props.shirt === 'Shirt4'} name="Shirt4" geometry={nodes.Shirt4.geometry} material={materials.Shirt4_skin1} skeleton={nodes.Shirt4.skeleton} />
+          <skinnedMesh visible={props.shirt === 'Shirt5'} name="Shirt5" geometry={nodes.Shirt5.geometry} material={materials.Shirt5_skin1} skeleton={nodes.Shirt5.skeleton} />
+          <skinnedMesh visible={props.shirt === 'Shirt6'} name="Shirt6" geometry={nodes.Shirt6.geometry} material={materials.Shirt6_skin1} skeleton={nodes.Shirt6.skeleton} />
+          <skinnedMesh visible={props.vest === 'Vest1' || props.vest === 'Vest1_Belt'} name="Vest1" geometry={nodes.Vest1.geometry} material={materials.Vest1_Skin1} skeleton={nodes.Vest1.skeleton} />
+          <skinnedMesh visible={props.vest === 'Vest1_Belt'} name="Vest1_Belt" geometry={nodes.Vest1_Belt.geometry} material={materials.Vest1_Skin1} skeleton={nodes.Vest1_Belt.skeleton} />
+          <skinnedMesh visible={props.vest === 'Vest2' || props.vest === 'Vest2_Full'} name="Vest2" geometry={nodes.Vest2.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2.skeleton} />
+          <skinnedMesh visible={props.vest === 'Vest2_Full'} name="Vest2_Bottom" geometry={nodes.Vest2_Bottom.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2_Bottom.skeleton} />
+          <skinnedMesh visible={props.vest === 'Vest2_Full'} name="Vest2_collar" geometry={nodes.Vest2_collar.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2_collar.skeleton} />
+          <skinnedMesh visible={props.vest === 'Vest2_Full'} name="Vest2_Shoulder_L" geometry={nodes.Vest2_Shoulder_L.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2_Shoulder_L.skeleton} />
+          <skinnedMesh visible={props.vest === 'Vest2_Full'} name="Vest2_Shoulder_R" geometry={nodes.Vest2_Shoulder_R.geometry} material={materials.Vest2_skin1} skeleton={nodes.Vest2_Shoulder_R.skeleton} />
         </group>
       </group>
     </group>

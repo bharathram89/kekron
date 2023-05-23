@@ -12,7 +12,7 @@ export const getCharacters = async () => {
   }
   
   
-  export const getCharacter = async (id) => {
+  export const getCharacterDetails = async (id) => {
       try {
         const response = await fetch(host+"/characters/"+id)
         return response.json();
