@@ -166,21 +166,32 @@ function containsObject(obj, list) {
 }
 
 function setStorage(key, value) {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     localStorage.setItem(key, value);
   }
 }
 function getStorage(key) {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     return localStorage.getItem(key);
   }
 }
 function removeStorage(key) {
-  if (typeof window !== 'undefined') {
+  if (typeof window !== "undefined") {
     localStorage.removeItem(key);
   }
 }
+function prepareHeaders() {
+  let headers = {
+    "Content-Type": "application/json",
+  };
+  let userInfo = getStorage("userInfo");
+  if (userInfo) {
+    headers["Authorizarion"] = `Bearer ${JSON.parse(userInfo)?.token}`;
+  }
+  return headers;
+}
 module.exports = {
+  prepareHeaders,
   removeStorage,
   getStorage,
   setStorage,

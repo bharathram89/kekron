@@ -10,7 +10,14 @@ import "./src/assets/css/global.css";
 import React from "react";
 import { Provider } from "react-redux";
 import store from "./src/redux/store";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const wrapRootElement = ({ element }) => {
-  return <Provider store={store}>{element}</Provider>;
+  return (
+    <Provider store={store}>
+      <ToastContainer />
+      {element}
+    </Provider>
+  );
 };
