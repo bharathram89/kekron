@@ -6,6 +6,7 @@ import Loader from '../../../components/loadingidicator/loader'
 import "./weaponDetail.css"
 import Button from '../../../components/shared/button';
 import SwitchWeapon from './weaponSwitcher'
+import { TextureLoader } from 'three';
 const WeaponDetails = ({weaponid}) => {
 
 
@@ -16,10 +17,15 @@ const WeaponDetails = ({weaponid}) => {
     const [selectedMuzzle, setselectedMuzzle] = useState(null);
     const [attachmentData, setattachmentData] = useState(null);
     const [selectedSideRail, setselectedSideRail] = useState(null);
+    
+    const [selectedTexture, setselectedTexture] = useState(null);
+
 
     const [uniqueAttachments, setUniqueAttachments] = useState([]);
 
     const fetchGunData = () => {
+
+
         getUniqueWeaponAttachmentType(weaponid)
         .then(uniqueAttachments => {
             setUniqueAttachments(uniqueAttachments);
@@ -54,6 +60,10 @@ const WeaponDetails = ({weaponid}) => {
                 magazine={selectedMag}
                 sideRail={selectedSideRail}
                 // {...section.fields}
+
+                normalMap={selectedTexture?.normalMap} 
+                aoMap={selectedTexture?.aoMap} 
+                metalnessMap={selectedTexture?.metalnessMap}
                 />
             );
         }
@@ -63,7 +73,19 @@ const WeaponDetails = ({weaponid}) => {
         fetchGunData()
     }, [])
 
+  useEffect(() => {
+    const fetchTextures = async () => {
+      const textureLoader = new TextureLoader();
+      const [metalnessMap, normalMap, aoMap] = await Promise.all([
+        textureLoader.load('https://ac-dev-s3.s3.us-west-1.amazonaws.com/materials/SM_Military_Rifle1_Rifle1_MetallicSmoothness.png'),
+        textureLoader.load('https://ac-dev-s3.s3.us-west-1.amazonaws.com/materials/SM_Military_Rifle1_Rifle1_Normal.png'),
+        textureLoader.load('https://ac-dev-s3.s3.us-west-1.amazonaws.com/materials/SM_Military_Rifle1_Rifle1_AlbedoTransparency.png'),
+      ]);
+      setselectedTexture({ metalnessMap, normalMap, aoMap });
+    };
 
+    fetchTextures();
+  }, []);
     
   return (
     <div style={{ position: 'relative', backgroundImage: 'url(../../assets/images/weaponConfigBG.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
@@ -106,7 +128,7 @@ const WeaponDetails = ({weaponid}) => {
     <Canvas style={{ width: '100%', height: '400px', maxWidth: '800px', margin: '20px auto' }}>
       <mesh>
         <ambientLight intensity={0.6} />
-        <spotLight intensity={0.8} position={[0, 0, 0]} />
+        <spotLight intensity={0.8} position={[10, 0, 0]} />
         <Suspense fallback={<Loader />}>
             <Stage intensity={2}>
                 {getWeapon(weaponid)}
