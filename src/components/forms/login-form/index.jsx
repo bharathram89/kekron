@@ -111,7 +111,9 @@ const LoginForm = () => {
                     }
                 </Button>
             </div>
-            <SocialAuth />
+            <div className="button text-center">
+                <SocialAuth />
+            </div>
             <div className="account-text mt-5 text-center">
                 <p>
                     Do not have any account,{" "}

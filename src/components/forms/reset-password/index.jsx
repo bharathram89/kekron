@@ -1,64 +1,55 @@
 import React, { useState, useEffect } from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import Button from "../../../components/shared/button";
-import { Link, navigate } from "gatsby";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactLoading from 'react-loading';
-import { signup } from "../../../service/auth";
-import { setStorage } from "../../../utils/functions";
-import { LOGIN_SUCCESS } from "../../../redux/types/authTypes";
-import FacebookAuth from "../../social-auth/facebook";
-import SocialAuth from "../../social-auth";
+import { resetPassword, signup } from "../../../service/auth";
+import { useRef } from "react";
+import { toast } from "react-toastify";
 
 
 const initialValues = {
-    name: '',
-    email: '',
-    password: '',
+    oldPassword: '',
+    newPassword: '',
     confirmPassword: ''
 };
 
-const RegisterForm = () => {
+const ResetPasswordForm = () => {
 
     const validationSchema = Yup.object().shape({
-        name: Yup.string().required('Name is required').matches(/^[a-zA-ZÀ-ÿ\s'-]+$/, 'Enter a valid name').min(1).max(35, 'Max 35 characters allowed'),
-        email: Yup.string().email('Invalid email address').matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, 'Please enter a valid email').required('Email is required'),
-        password: Yup.string().required('Password is required').matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,16}$/, 'Password must have one special character, one number,one upper case and one lower case letter').min(6, 'Min 6 characters required'),
+        oldPassword: Yup.string().required('Old password is required'),
+        newPassword: Yup.string().required('New password is required').matches(/^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,}$/, 'Password must have one special character, one number,one upper case and one lower case letter').min(6, 'Min 6 characters required'),
         confirmPassword: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .oneOf([Yup.ref('newPassword'), null], 'New and confirm password must match')
         .required('Confirm Password is required'),
         });
+    
+    const { userInfo } = useSelector(state => state?.auth);
 
     const [loading, setLoading] = useState(false);
-    const dispatch = useDispatch();
 
-    const {isLoggedIn} = useSelector(state => state?.auth);
-
-    useEffect(() => {
-        if(isLoggedIn){
-           navigate('/');
-        }
-    }, [isLoggedIn]);
+    const formRef = useRef();
 
     const submitHandler = (values) => {
         const payload = {
-            name: values?.name,
-            email: values?.email,
-            password: values?.password
-        }
-        setLoading(true)
-        signup(payload)
-        .then(response => {
+            email: userInfo?.email,
+            old_password: values?.oldPassword,
+            new_password: values?.newPassword
+          };
+
+          setLoading(true);
+          resetPassword(payload)
+          .then(response => {
+            if(response?.error){
+             toast.error(response?.error || 'something went wrong')
+            }else{
+            formRef?.current?.resetForm();
+            toast.success('password changed successfully');
+            }
             setLoading(false);
-            setStorage('userInfo', JSON.stringify(response));
-            dispatch({type: LOGIN_SUCCESS, payload: response});
-        })
-        .catch((err) => {
-            setLoading(false);
-            console.log(err);
-        })
+          });
     }
 
     return (
@@ -66,6 +57,7 @@ const RegisterForm = () => {
         initialValues={initialValues}
         enableReinitialize={true}
         validationSchema={validationSchema}
+        innerRef={formRef}
         onSubmit={(values) => {
             submitHandler(values);
         }}
@@ -78,41 +70,30 @@ const RegisterForm = () => {
         }) => {
           return (
             <form className="form-login mt-10" onSubmit={handleSubmit}>
-            <div className="single-fild">
+             <div className="single-fild">
                 <input
                     className="px-6 h-14 mb-6 border-secondary-90 bg-secondary-100 hover:border-primary transition-all border-2 border-solid block rounded-md w-full focus:outline-none"
-                    type="text"
-                    placeholder="Name"
-                    value={values?.name}
+                    type="password"
+                    placeholder="old password"
+                    value={values?.oldPassword}
                     onChange={(e) => {
-                        setFieldValue('name', e?.target?.value)
+                        setFieldValue('oldPassword', e?.target?.value);
                     }}
                 />
-                {errors?.name && <span className="validation-error">{errors?.name}</span>}
+                {errors?.oldPassword && <span className="validation-error">{errors?.oldPassword}</span>}
             </div>
-            <div className="single-fild">
-                <input
-                    className="px-6 h-14 mb-6 border-secondary-90 bg-secondary-100 hover:border-primary transition-all border-2 border-solid block rounded-md w-full focus:outline-none"
-                    type="email"
-                    placeholder="E-mail"
-                    value={values?.email}
-                    onChange={(e) => {
-                        setFieldValue('email', e?.target?.value);
-                    }}
-                />
-                {errors?.email && <span className="validation-error">{errors?.email}</span>}
-            </div>
+            
             <div className="single-fild">
                 <input
                     className="px-6 h-14 mb-6 border-secondary-90 bg-secondary-100 hover:border-primary transition-all border-2 border-solid block rounded-md w-full focus:outline-none"
                     type="password"
-                    placeholder="password"
-                    value={values?.password}
+                    placeholder="new password"
+                    value={values?.newPassword}
                     onChange={(e) => {
-                        setFieldValue('password', e?.target?.value);
+                        setFieldValue('newPassword', e?.target?.value);
                     }}
                 />
-                {errors?.password && <span className="validation-error">{errors?.password}</span>}
+                {errors?.newPassword && <span className="validation-error">{errors?.newPassword}</span>}
             </div>
             <div className="single-fild">
                 <input
@@ -135,7 +116,7 @@ const RegisterForm = () => {
                         </div>
                         :
                         <>
-                        Sign up
+                        Reset
                         <StaticImage
                             className="align-middle ml-3 transition-all group-hover:ml-5"
                             src="../../../data/images/icons/arrrow-icon.webp"
@@ -145,17 +126,6 @@ const RegisterForm = () => {
                     }
                 </Button>
             </div>
-            <div className="button text-center">
-                <SocialAuth />
-            </div>
-            <div className="account-text mt-5 text-center">
-                <p>
-                    Already have account, {""}
-                    <Link to="/login" className="font-semibold text-yellow-400">
-                        Login here
-                    </Link>
-                </p>
-            </div>
         </form>
           );
         }}
@@ -163,4 +133,4 @@ const RegisterForm = () => {
     );
 };
 
-export default RegisterForm;
+export default ResetPasswordForm;
