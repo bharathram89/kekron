@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { navigate } from "gatsby";
 import { useDispatch, useSelector } from 'react-redux';
-import FacebookLogin from 'react-facebook-login';
 import { facebookAuth } from "../../../service/auth";
 import { setStorage } from "../../../utils/functions";
 import { LOGIN_SUCCESS } from "../../../redux/types/authTypes";
+import { useGoogleLogin } from '@react-oauth/google';
 
-const FacebookAuth = () => {
+const GoogleAuth = () => {
 
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
 
     const {isLoggedIn} = useSelector(state => state?.auth);
+
+    const login = useGoogleLogin({
+          
+          onSuccess: tokenResponse => console.log(tokenResponse),
+        });
 
     useEffect(() => {
         if(isLoggedIn){
@@ -43,15 +48,10 @@ const FacebookAuth = () => {
         };
 
     return (
-            <div className="single-fild">
-               <FacebookLogin
-                    appId={process.env.GATSBY_FACEBOOK_APP_ID}
-                    autoLoad={false}
-                    fields="name,email,picture"
-                    callback={handleLogin}
-                    />
-            </div>
+          <div className="single-fild">
+             <button onClick={login} className="google-btn">LOGIN WITH GOOGLE</button>      
+          </div>
     );
 };
 
-export default FacebookAuth;
+export default GoogleAuth;

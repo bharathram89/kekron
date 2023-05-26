@@ -58,7 +58,7 @@ const Header = ({ data }) => {
                         <div className="header-right-action flex items-center">
                             <button
                                 shape="square2xl"
-                                className="text-white hidden xs:block"
+                                className="text-white hidden xs:block nav-action-btn"
                                 onClick={handleClick}
                             >
                                 {isLoggedIn ? 'LOGOUT' : 'SIGN UP'}

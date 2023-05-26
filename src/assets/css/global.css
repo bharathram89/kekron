@@ -145,3 +145,38 @@
 .loader-div {
     margin-left: 40%;
 }
+.nav-action-btn{
+    background: none;
+    border: 2px solid gray!important;
+    padding: 12px 20px!important;
+}
+.nav-action-btn:hover{
+    color: white!important;
+    background-color: #9A51D7!important;
+}
+.kep-login-facebook{
+    background-color: #9A51D7!important;
+    padding: calc(0.34435vw + 13.38843px) calc(0.34435vw + 18.38843px)!important;
+    border-radius: 26px!important;
+    width: 100%!important;
+    font-family: Helvetica,sans-serif!important;
+    font-size: 16px!important;
+    border-color: none!important;
+}
+.kep-login-facebook:hover{
+    background-color: #668FE3!important;
+}
+.google-btn{
+    background-color: #9A51D7!important;
+    padding: calc(0.34435vw + 13.38843px) calc(0.34435vw + 18.38843px)!important;
+    border-radius: 26px!important;
+    width: 100%!important;
+    font-family: Helvetica,sans-serif!important;
+    font-size: 16px!important;
+    color: white;
+    margin-top: 16px;
+    font-weight: 700;
+}
+.google-btn:hover{
+    background-color: #668FE3!important;
+}
