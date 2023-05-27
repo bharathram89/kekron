@@ -26,20 +26,6 @@ export default function SM_Military_Rifle3FullModel(props) {
             <mesh visible={props.muzzle == 'Suppressor_(3)'} geometry={nodes['Suppressor_(3)'].geometry} material={materials['Flash Hider (1)']} position={[-0.32, -0.02, 0]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
           </group>
           <group position={[-1.6, 0.01, 0.02]} scale={0.82}>
-            <group visible={props.underBarrel == 'Folding_Grip'} position={[0.07, -0.1, -0.02]} rotation={[-1.57, -1.55, -1.57]} scale={0.05}>
-              <mesh geometry={nodes.Base.geometry} material={materials['Flash Hider (1)']} position={[0, 4.56, 2.21]} rotation={[0.02, 0, 0]} scale={0.95} />
-              <mesh geometry={nodes.Grip.geometry} material={materials['Flash Hider (1)']} position={[-0.08, -0.15, -0.17]} rotation={[0.02, 0, 0]} scale={0.95} />
-            </group>
-            <mesh visible={props.underBarrel == 'Angled_Grip_(1)'} geometry={nodes['Angled_Grip_(1)'].geometry} material={materials['Flash Hider (1)']} position={[-0.01, 0.07, -0.03]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.underBarrel == 'Angled_Grip_(2)'} geometry={nodes['Angled_Grip_(2)'].geometry} material={materials['Flash Hider (1)']} position={[0, 0.06, -0.03]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.underBarrel == 'Angled_Grip_(3)'} geometry={nodes['Angled_Grip_(3)'].geometry} material={materials['Flash Hider (1)']} position={[0.05, 0.07, -0.03]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.underBarrel == 'Bipod'} geometry={nodes.Bipod.geometry} material={materials['Flash Hider (1)']} position={[-0.02, -0.28, -0.03]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.underBarrel == 'Vertical_Grip_(1)'} geometry={nodes['Vertical_Grip_(1)'].geometry} material={materials['Flash Hider (1)']} position={[0, -0.16, -0.02]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.underBarrel == 'Vertical_Grip_(2)'} geometry={nodes['Vertical_Grip_(2)'].geometry} material={materials['Flash Hider (1)']} position={[0, -0.08, -0.03]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.underBarrel == 'Vertical_Grip_(3)'} geometry={nodes['Vertical_Grip_(3)'].geometry} material={materials['Flash Hider (1)']} position={[0, 0.07, -0.02]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.underBarrel == 'Vertical_Grip_(4)'} geometry={nodes['Vertical_Grip_(4)'].geometry} material={materials['Flash Hider (1)']} position={[0, -0.06, -0.03]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.underBarrel == 'Vertical_Grip_(5)'} geometry={nodes['Vertical_Grip_(5)'].geometry} material={materials['Flash Hider (1)']} position={[0, -0.04, -0.03]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.underBarrel == 'Vertical_Grip_(6)'} geometry={nodes['Vertical_Grip_(6)'].geometry} material={materials['Flash Hider (1)']} position={[0, 0.07, -0.03]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
           </group>
           <group position={[-0.81, -0.11, 0]}>
             <group position={[0.04, -0.12, 0]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={0.03}>
@@ -74,11 +60,6 @@ export default function SM_Military_Rifle3FullModel(props) {
             <mesh visible={props.magazine == 'Drum_Magazine__(4)'} geometry={nodes['Drum_Magazine_(4)'].geometry} material={materials['Flash Hider (1)']} position={[0.03, -0.06, 0]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
           </group>
           <group position={[-2.05, 0.18, 0]} scale={0.49}>
-            <mesh visible={props.sideRail == 'Flash_Light_(1)'} geometry={nodes['Flash_Light_(1)'].geometry} material={materials['Flash Hider (1)']} position={[-0.01, -0.06, 0.01]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.sideRail == 'Flash_Light_(2)'} geometry={nodes['Flash_Light_(2)'].geometry} material={materials['Flash Hider (1)']} position={[-0.03, -0.08, 0]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.sideRail == 'FlashLaser_Combo'} geometry={nodes.FlashLaser_Combo.geometry} material={materials['Flash Hider (1)']} position={[-0.02, -0.09, 0]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.sideRail == 'Laser_Sight_(1)'} geometry={nodes['Laser_Sight_(1)'].geometry} material={materials['Flash Hider (1)']} position={[-0.04, -0.07, 0]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
-            <mesh visible={props.sideRail == 'Laser_Sight_(2)'} geometry={nodes['Laser_Sight_(2)'].geometry} material={materials['Flash Hider (1)']} position={[-0.09, -0.1, 0.01]} rotation={[0, -Math.PI / 2, 0]} scale={0.04} />
           </group>
           <group position={[-0.57, 0.43, 0.02]} scale={0.91}>
             <group visible={props.sight == 'Magnifier'} position={[0.48, 0.06, -0.01]} rotation={[Math.PI / 2, 0.08, Math.PI / 2]} scale={0.01}>
