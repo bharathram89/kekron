@@ -1,10 +1,14 @@
 
-
+import { prepareHeaders } from "../utils/functions";
 //"https://api.goloadout.com"    "http://127.0.0.1:5000"
 let host = "https://api.goloadout.com"
-export const getCharacters = async () => {
+
+  export const getCharacters = async () => {
     try {
-      const response = await fetch(host+"/characters")
+      const response = await fetch(host+"/characters", {
+        method: "GET",
+        headers:  prepareHeaders(),
+      });
       return response.json();
     } catch (error) {
       console.error(error);
@@ -14,7 +18,10 @@ export const getCharacters = async () => {
   
   export const getCharacterDetails = async (id) => {
       try {
-        const response = await fetch(host+"/characters/"+id)
+        const response = await fetch(host+"/characters/"+id, {
+          method: "GET",
+          headers:  prepareHeaders(),
+        });
         return response.json();
       } catch (error) {
         console.error(error);

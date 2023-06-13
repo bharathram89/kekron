@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { navigate } from "gatsby";
 import { useDispatch, useSelector } from 'react-redux';
-import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from '@greatsumini/react-facebook-login';
 import { facebookAuth } from "../../../service/auth";
 import { setStorage } from "../../../utils/functions";
 import { LOGIN_SUCCESS } from "../../../redux/types/authTypes";
