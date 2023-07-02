@@ -64,10 +64,10 @@ function CharactersContainer({ data, setActive }) {
               }}
             >
               {item?.name} <br />
-              {item?.type} | {item?.subType}
+              {/*{item?.type} | {item?.subType}*/}
             </div>
           </div>
-          <Canvas key={item.id}>
+          <Canvas key={item.id} style={{height:'420px',marginTop:'20px'}}>
             <CharacterBase
               glbFile={item.miniModelUrl}
               animations={["Idle", "Walk"]}
