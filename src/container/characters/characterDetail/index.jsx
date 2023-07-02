@@ -2,12 +2,14 @@ import React, { useEffect, useState, Suspense } from 'react';
 import { Canvas } from '@react-three/fiber'
 import { useGLTF, Stage, PresentationControls, OrbitControls } from '@react-three/drei'
 import CQBMaster_custom from '../../../assets/weaponJsx/CQBMaster-custom';
-import { getUniqueOutfitOptionType, getCharacterOutfits, getCharacterDetails } from "../../../service/characters";
+import { getUniqueOutfitOptionType, getCharacterOutfits, getCharacterDetails, saveCharacter } from "../../../service/characters";
 import Loader from '../../../components/loadingidicator/loader'
 import SK_Military_Character6 from '../../../assets/characterJsx/SK_Military_Charcter6'
 // import "./weaponDetail.css"
 import Button from '../../../components/shared/button';
 import SwitchCharacter from './characterSwitcher';
+import { useDispatch, useSelector } from 'react-redux';
+import { HIDE_MODAL } from '../../../redux/types/modalType';
 const CharacterDetail = ({characterid}) => {
 
 
@@ -30,7 +32,8 @@ const CharacterDetail = ({characterid}) => {
     const [outfitData, setOutfitData] = useState(null);
     const [animation, setanimation] = useState(null);
     const [uniqueOutfits, setUniqueOutfits] = useState([]);
-
+    const dispatch = useDispatch()
+    const { userInfo } = useSelector(state => state?.auth);
     const fetchCharacterData = () => {
         Promise.all([getCharacterDetails(characterid), getUniqueOutfitOptionType(characterid), getCharacterOutfits(characterid)]).then((combined) => {
             console.log(combined);
@@ -105,6 +108,30 @@ const CharacterDetail = ({characterid}) => {
         x=x+1;
         setanimation(x)
     }
+    const handleSave = () => {
+      
+        console.log(userInfo)
+        let obj = {
+            character_id: characterid,
+            outfit: {
+                eyewear: selectedEyewear,
+                backpack: selectedBackpack,
+                footwear: selectedFootwear,
+                decal: selectedDecal,
+                pant: selectedPant,
+                headgear: selectedHeadgear,
+                headset: selectedHeadset,
+                extras: selectedExtras,
+                shirt: selectedShirt,
+                vest: selectedVest,
+                vest_attachments: selectedVest_attachments
+
+            }
+
+        }
+        // saveCharacter(id, obj)
+        dispatch({type: HIDE_MODAL})
+    }
   return (
     <div style={{ position: 'relative', backgroundImage: 'url(../../assets/images/weaponConfigBG.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
     <div className=' flex items-center justify-center flex-wrap px-2'>
@@ -139,7 +166,7 @@ const CharacterDetail = ({characterid}) => {
                             ))}
                         </select>
               </a>
-        <a style={{  margin:'20px', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' }}>
+        <a onClick={handleSave} style={{  margin:'20px', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' }}>
            <Button>Save</Button>
         </a>
           </div>

@@ -13,8 +13,10 @@ import { graphql } from "gatsby";
 import { normalizedData } from "@utils/functions";
 import FunfactArea from "../container/home/funfact";
 import { useSelector } from 'react-redux'; 
+import SelectCharacter from "../components/Modal/SelectCharacter";
 
 const IndexPage = ({ data }) => {
+    const { show } = useSelector(state => state?.modal);
     const globalContent = normalizedData(data?.allGeneral?.nodes || []);
     const content = normalizedData(data?.page?.content || []);
     return (
@@ -24,6 +26,9 @@ const IndexPage = ({ data }) => {
                 ...globalContent["footer"],
             }}
         >
+            {
+                show && <SelectCharacter />
+            }
             <SEO title="Home" pathname="/" />
             <HeroArea data={content["hero-section"]} />
             <WelcomeFeaturesArea data={content["welcome-section"]} />

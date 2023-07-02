@@ -7,7 +7,7 @@ import {getCharacters, getCharactersTypes} from "../../../service/characters"
 import CharactersContainer from "../../../components/characters/characterContainers"
 
 
-const AllCharacters = ({ data }) => {
+const AllCharacters = ({ data, setActive }) => {
     const [filterCharacters, setfilterCharacters] = useState([]);
     const [allCharacters, setallCharacters] = useState([]);
     const [types, setTypes] = useState([]);
@@ -59,7 +59,7 @@ const AllCharacters = ({ data }) => {
                     />
                 </div>
             </div>
-                <CharactersContainer data={filterCharacters}></CharactersContainer>
+                <CharactersContainer setActive={setActive} data={filterCharacters}></CharactersContainer>
 
         </div>
     </section>

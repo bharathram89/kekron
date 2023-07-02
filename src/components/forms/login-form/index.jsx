@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from "react";
 import { LOGIN_SUCCESS } from '../../../redux/types/authTypes'
 import SocialAuth from "../../social-auth";
+import { SHOW_MODAL } from "../../../redux/types/modalType";
 
 const initialValues = {
     email: '',
@@ -45,6 +46,8 @@ const LoginForm = () => {
         .then(response => {
             setLoading(false);
             setStorage('userInfo', JSON.stringify(response));
+            setStorage('selectCharacter', true)
+            dispatch({type: SHOW_MODAL})
             dispatch({type: LOGIN_SUCCESS, payload: response});
         })
         .catch((err) => {

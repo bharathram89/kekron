@@ -54,6 +54,30 @@ let host = "https://api.goloadout.com"
     } catch (error) {
       console.error(error);
     }
+}
+  
+
+export const saveCharacter = async (id, payload) => {
+  try {
+
+    fetch(host + `/users/${id}/characters`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(payload),
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   }
+  catch (err) {
+    console.log(err);
+  }
+}
   
   
