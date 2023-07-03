@@ -1,9 +1,11 @@
 import { prepareHeaders } from "../utils/functions";
-import { toast } from "react-toastify";
 
 export const login = async (payload) => {
+  console.log("_________________>>>")
+  console.log(process.env.API_URL)
+
   try {
-    const response = await fetch("https://api.goloadout.com/login", {
+    const response = await fetch(`${process.env.API_URL}/login`, {
       method: "POST",
       headers:  prepareHeaders(),
       body: JSON.stringify(payload),
@@ -16,7 +18,7 @@ export const login = async (payload) => {
 
 export const signup = async (payload) => {
   try {
-    const response = await fetch("https://api.goloadout.com/register", {
+    const response = await fetch(`${process.env.API_URL}/register`, {
       method: "POST",
       headers:  prepareHeaders(),
       body: JSON.stringify(payload),
@@ -29,7 +31,7 @@ export const signup = async (payload) => {
 
 export const facebookAuth = async (payload) => {
   try {
-    const response = await fetch("https://api.goloadout.com/auth/facebook", {
+    const response = await fetch(`${process.env.API_URL}/auth/facebook`, {
       method: "POST",
       headers:  prepareHeaders(),
       body: JSON.stringify(payload),
@@ -41,7 +43,7 @@ export const facebookAuth = async (payload) => {
 };
 export const resetPassword = async (payload) => {
   try {
-    const response = await fetch("https://api.goloadout.com/reset_password", {
+    const response = await fetch(`${process.env.API_URL}/reset_password`, {
       method: "POST",
       headers: prepareHeaders(),
       body: JSON.stringify(payload),
@@ -54,7 +56,7 @@ export const resetPassword = async (payload) => {
 
 export const googleAuth = async (payload) => {
   try {
-    const response = await fetch("https://api.goloadout.com/auth/facebook", {
+    const response = await fetch(`${process.env.API_URL}/auth/facebook`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

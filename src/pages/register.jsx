@@ -21,7 +21,7 @@ const RagisterPage = ({ data, location, pageContext }) => {
             <PageBreadcrumb
                 pageContext={pageContext}
                 location={location}
-                title="Login"
+                title="Register"
             />
             <Register data={content["register-section"]} />
         </Layout>

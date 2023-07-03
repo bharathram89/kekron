@@ -21,7 +21,8 @@ const LoginForm = () => {
 
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
-
+    console.log("---------------->")
+    console.log(process.env.API_URL)
     const {isLoggedIn} = useSelector(state => state?.auth);
     //validation schema for form
     const validationSchema = Yup.object().shape({
