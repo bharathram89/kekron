@@ -1,83 +1,74 @@
-
 import { prepareHeaders } from "../utils/functions";
 //"https://api.goloadout.com"    "http://127.0.0.1:5000"
-let host = "https://api.goloadout.com"
+let host = "https://api.goloadout.com";
 
-  export const getCharacters = async () => {
-    try {
-      const response = await fetch(host+"/characters", {
-        method: "GET",
-        headers:  prepareHeaders(),
-      });
-      return response.json();
-    } catch (error) {
-      console.error(error);
-    }
+export const getCharacters = async () => {
+  try {
+    const response = await fetch(host + "/characters", {
+      method: "GET",
+      headers: prepareHeaders(),
+    });
+    return response.json();
+  } catch (error) {
+    console.error(error);
   }
-  
-  
-  export const getCharacterDetails = async (id) => {
-      try {
-        const response = await fetch(host+"/characters/"+id, {
-          method: "GET",
-          headers:  prepareHeaders(),
-        });
-        return response.json();
-      } catch (error) {
-        console.error(error);
-      }
+};
+
+export const getCharacterDetails = async (id) => {
+  try {
+    const response = await fetch(host + "/characters/" + id, {
+      method: "GET",
+      headers: prepareHeaders(),
+    });
+    return response.json();
+  } catch (error) {
+    console.error(error);
   }
-  
-  export const getUniqueOutfitOptionType = async (id) => {
-      try {
-        const response = await fetch(host+"/characters/"+id+"/unique_outfit_type")
-        return response.json();
-      } catch (error) {
-        console.error(error);
-      }
+};
+
+export const getUniqueOutfitOptionType = async (id) => {
+  try {
+    const response = await fetch(
+      host + "/characters/" + id + "/unique_outfit_type"
+    );
+    return response.json();
+  } catch (error) {
+    console.error(error);
   }
-  
-  export const getCharacterOutfits = async (id) => {
-      try {
-        const response = await fetch(host+"/characters/"+id+"/outfits")
-        return response.json();
-      } catch (error) {
-        console.error(error);
-      }
+};
+
+export const getCharacterOutfits = async (id) => {
+  try {
+    const response = await fetch(host + "/characters/" + id + "/outfits");
+    return response.json();
+  } catch (error) {
+    console.error(error);
   }
-  
-  
-    export const getCharactersTypes = async () => {
-    try {
-      const response = await fetch(host+"/character-categories")
-      return response.json();
-    } catch (error) {
-      console.error(error);
-    }
-}
-  
+};
+
+export const getCharactersTypes = async () => {
+  try {
+    const response = await fetch(host + "/character-categories");
+    return response.json();
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export const saveCharacter = async (id, payload) => {
   try {
-
-    fetch(host + `/users/${id}/characters`, {
-      method: 'POST',
+    console.log('payload........',payload);
+    const response = await fetch(host + `/users/${id}/characters`, {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
+        authorization: "",
       },
       body: JSON.stringify(payload),
-    })
-      .then(response => response.json())
-      .then(result => {
-        console.log(result);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }
-  catch (err) {
+    });
+
+    console.log(response);
+  } catch (err) {
     console.log(err);
   }
-}
-  
-  
+};

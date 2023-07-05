@@ -11,24 +11,22 @@ import SwitchCharacter from './characterSwitcher';
 import { useDispatch, useSelector } from 'react-redux';
 import { HIDE_MODAL } from '../../../redux/types/modalType';
 const CharacterDetail = ({characterid}) => {
+    const [outfit, setOutfits] = useState({
+        Backpack: "",
+        Decals: "",
+        Eyewear: "",
+        Footwear: "",
+        Gloves: "",
+        Headgear: "",
+        Headset: "",
+        Pants: "",
+        Shirts: "",
+        Vest: "",
+        Vest_Attachments: "",
+        Extras: "",
+        Headwear: "",
 
-
-
-    const [selectedBackpack, setselectedBackpack] = useState(null);
-    const [selectedDecal, setselectedDecal] = useState(null);
-    const [selectedExtras, setselectedExtras] = useState(null);
-    const [selectedEyewear, setselectedEyewear] = useState(null);
-
-    const [selectedFootwear, setselectedFootwear] = useState(null);
-    const [selectedGloves, setselectedGloves] = useState(null);
-    const [selectedHeadgear, setselectedHeadgear] = useState(null);
-    const [selectedHeadset, setselectedHeadset] = useState(null);
-    const [selectedHeadwear, setselectedHeadwear] = useState(null);
-    const [selectedPant, setselectedPant] = useState(null);
-    const [selectedShirt, setselectedShirt] = useState(null);
-    const [selectedVest, setselectedVest] = useState(null);
-    const [selectedVest_attachments, setselectedVest_attachments] = useState(null);
-
+    })
     const [outfitData, setOutfitData] = useState(null);
     const [animation, setanimation] = useState(null);
     const [uniqueOutfits, setUniqueOutfits] = useState([]);
@@ -60,17 +58,16 @@ const CharacterDetail = ({characterid}) => {
 
             setOutfitData(groupedAttachments);
             if (requiredOutfit.includes('shirt')) {
-                setselectedShirt(groupedAttachments.Shirts[0].name);
+                setOutfits({...outfit, Shirts: groupedAttachments.Shirts[0].name });
+                
             }
             if (requiredOutfit.includes('pant')) {
-                setselectedPant(groupedAttachments.Pants[0].name);
+                setOutfits({...outfit, Pants: groupedAttachments.Pants[0].name });
+                
             }
             if (requiredOutfit.includes('boots')) {
-                setselectedFootwear(groupedAttachments.Footwear[0].name);
+                setOutfits({...outfit, Footwear: groupedAttachments.Footwear[0].name });
             }
-            console.log(requiredOutfit);
-            console.log(groupedAttachments,"groupedOutfits",allOutfits)
-
           });
     }
     useEffect(() => {
@@ -85,18 +82,18 @@ const CharacterDetail = ({characterid}) => {
                 <Switcher
                 key={characterid} // or something unique
                 animation={animation}
-                backpack={selectedBackpack}
-                decal={selectedDecal}
-                extras={selectedExtras}
-                eyewear={selectedEyewear}
-                footwear={selectedFootwear}
+                backpack={outfit.Backpack}
+                decal={outfit.Decals}
+                extras={outfit.Extras}
+                eyewear={outfit.Eyewear}
+                footwear={outfit.Footwear}
                 // gloves={selectedGloves}
-                headgear={selectedHeadgear}
-                headset={selectedHeadset}
-                pant={selectedPant}
-                shirt={selectedShirt}
-                vest={selectedVest}
-                vest_attachments={selectedVest_attachments}
+                headgear={outfit.Headgear}
+                headset={outfit.Headset}
+                pant={outfit.Pants}
+                shirt={outfit.Shirts}
+                vest={outfit.Vest}
+                vest_attachments={outfit.Vest_Attachments}
                 // {...section.fields}
                 />
             );
@@ -109,29 +106,14 @@ const CharacterDetail = ({characterid}) => {
         setanimation(x)
     }
     const handleSave = () => {
-      
-        console.log(userInfo)
-        let obj = {
-            character_id: characterid,
-            outfit: {
-                eyewear: selectedEyewear,
-                backpack: selectedBackpack,
-                footwear: selectedFootwear,
-                decal: selectedDecal,
-                pant: selectedPant,
-                headgear: selectedHeadgear,
-                headset: selectedHeadset,
-                extras: selectedExtras,
-                shirt: selectedShirt,
-                vest: selectedVest,
-                vest_attachments: selectedVest_attachments
-
-            }
-
-        }
-        // saveCharacter(id, obj)
+        console.log(outfit)
+        saveCharacter(userInfo.userId, outfit)
         dispatch({type: HIDE_MODAL})
     }
+    const handleChange = (e) => {
+        setOutfits({...outfit, [e.target.name]: e.target.value})
+    }
+
   return (
     <div style={{ position: 'relative', backgroundImage: 'url(../../assets/images/weaponConfigBG.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat'}}>
     <div className=' flex items-center justify-center flex-wrap px-2'>
@@ -139,7 +121,7 @@ const CharacterDetail = ({characterid}) => {
         <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'headset') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Headset</label>
             <br></br><hr></hr>
-            <select id="selectDropdown3" onChange={(e) => setselectedHeadset(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+            <select id="selectDropdown3" name='Headset' value={outfit.Headset} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
                 <option>None</option>
                 {outfitData?.Headset?.map(option => (
                     <option key={option.id} value={option.value}>{option.name}</option>
@@ -149,23 +131,23 @@ const CharacterDetail = ({characterid}) => {
         <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'headgear') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Headgear</label>
             <br></br><hr></hr>
-            <select id="selectDropdown3" onChange={(e) => setselectedHeadgear(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+            <select id="selectDropdown3" name='Headgear' value={outfit.Headgear} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
                 <option>None</option>
                 {outfitData?.Headgear?.map(option => (
                     <option key={option.id} value={option.value}>{option.name}</option>
                 ))}
             </select>
               </a>
-              <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'eyewear') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
-                        <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Eyewear</label>
-                        <br></br><hr></hr>
-                        <select id="selectDropdown3" onChange={(e) => setselectedEyewear(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
-                            <option>None</option>
-                            {outfitData?.Eyewear?.map(option => (
-                                <option key={option.id} value={option.value}>{option.name}</option>
-                            ))}
-                        </select>
-              </a>
+         <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'eyewear') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
+             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Eyewear</label>
+             <br></br><hr></hr>
+             <select id="selectDropdown3" name='Eyewear' value={outfit.Eyewear} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+             <option>None</option>
+              {outfitData?.Eyewear?.map(option => (
+                <option key={option.id} value={option.value}>{option.name}</option>
+               ))}
+             </select>
+        </a>
         <a onClick={handleSave} style={{  margin:'20px', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' }}>
            <Button>Save</Button>
         </a>
@@ -175,7 +157,7 @@ const CharacterDetail = ({characterid}) => {
                     <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'decals') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding:       '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
                        <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Decals</label>
                        <br></br><hr></hr>
-                       <select id="selectDropdown3" onChange={(e) => setselectedDecal(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                       <select id="selectDropdown3" name='Decals' value={outfit.Decals} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
                             <option>None</option>
                             {outfitData?.Decals?.map(option => (
                             <option key={option.id} value={option.value}>{option.name}</option>
@@ -185,7 +167,7 @@ const CharacterDetail = ({characterid}) => {
                     <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'shirts') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
                         <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Shirt</label>
                         <br></br><hr></hr>
-                        <select id="selectDropdown3" onChange={(e) => setselectedShirt(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                        <select id="selectDropdown3" name='Shirts' value={outfit.Shirts} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
                                 <option>None</option>
                                 {outfitData?.Shirts?.map(option => (
                                 <option key={option.id} value={option.value}>{option.name}</option>
@@ -209,7 +191,7 @@ const CharacterDetail = ({characterid}) => {
               <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'footwear') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
                     <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Footwear</label>
                     <br></br><hr></hr>
-                    <select id="selectDropdown3" onChange={(e) => setselectedFootwear(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                    <select id="selectDropdown3" name='Footwear' value={outfit.Footwear} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
                         <option>None</option>
                         {outfitData?.Footwear?.map(option => (
                             <option key={option.id} value={option.value}>{option.name}</option>
@@ -219,7 +201,7 @@ const CharacterDetail = ({characterid}) => {
                 <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'pants') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
                     <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Pants</label>
                     <br></br><hr></hr>
-                    <select id="selectDropdown3" onChange={(e) => setselectedPant(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                    <select id="selectDropdown3" name='Pants' value={outfit.Pants} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
                         <option>None</option>
                         {outfitData?.Pants?.map(option => (
                             <option key={option.id} value={option.value}>{option.name}</option>
@@ -235,7 +217,7 @@ const CharacterDetail = ({characterid}) => {
         <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'backpack') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Backpack</label>
             <br></br><hr></hr>
-            <select id="selectDropdown3" onChange={(e) => setselectedBackpack(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+            <select id="selectDropdown3" name='Backpack' value={outfit.Backpack} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
                 <option>None</option>
                 {outfitData?.Backpack?.map(option => (
                     <option key={option.id} value={option.value}>{option.name}</option>
@@ -245,7 +227,7 @@ const CharacterDetail = ({characterid}) => {
         <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'vest attachments') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
                       <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Vest Attachments</label>
                       <br></br><hr></hr>
-                      <select id="selectDropdown3" onChange={(e) => setselectedVest_attachments(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+                      <select id="selectDropdown3" name='Vest_Attachments' value={outfit.Vest_Attachments} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
                         <option>None</option>
                         {outfitData?.['Vest Attachments']?.map(option => (
                             <option key={option.id} value={option.value}>{option.name}</option>
@@ -255,7 +237,7 @@ const CharacterDetail = ({characterid}) => {
         <a style={uniqueOutfits.some(item => item.trim().toLowerCase() === 'extras') ? { margin: '20px', fontSize: '20px', textAlign: 'center', padding: '20px', background: 'linear-gradient(to bottom, #606060, #808080)', opacity: 0.8, borderRadius: '5px', border: '1px solid #ccc', boxShadow: '0 0 10px rgba(0, 0, 0, 0.3)', color: '#fff' } : {display: 'none'}}>
             <label style={{  margin:'20px', padding: '20px', fontWeight: 'bold' }} htmlFor="selectDropdown1">Extras</label>
             <br></br><hr></hr>
-            <select id="selectDropdown3" onChange={(e) => setselectedExtras(e.target.value)} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
+            <select id="selectDropdown3" name='Extras' value={outfit.Extras} onChange={handleChange} style={{ background: 'rgba(128, 128, 128, 0.5)', border: 'none', padding: '5px 10px', borderRadius: '5px', color: '#fff' }}>
                 <option>None</option>
                 {outfitData?.Extras?.map(option => (
                     <option key={option.id} value={option.value}>{option.name}</option>

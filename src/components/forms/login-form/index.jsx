@@ -46,9 +46,11 @@ const LoginForm = () => {
         .then(response => {
             setLoading(false);
             setStorage('userInfo', JSON.stringify(response));
-            setStorage('selectCharacter', true)
+            dispatch({ type: LOGIN_SUCCESS, payload: response });
+            if (response.userCharacter.length) {
+                return
+            }
             dispatch({type: SHOW_MODAL})
-            dispatch({type: LOGIN_SUCCESS, payload: response});
         })
         .catch((err) => {
             setLoading(false);
