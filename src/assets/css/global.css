@@ -180,3 +180,18 @@
 .google-btn:hover{
     background-color: #668FE3!important;
 }
+.profile-img{
+    width: 53px;
+    height: 53px;
+    margin-left: 10px;
+}
+.profile-dropdown ul li{
+    font-size: 17px;
+}
+.profile-dropdown{
+    margin-left: -98px;
+    margin-top: 14px;
+    background-color: rgb(0 9 42 / 1);
+    color: white;
+    color: white;
+}

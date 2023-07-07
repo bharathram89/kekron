@@ -1,6 +1,6 @@
 import { StaticImage } from "gatsby-plugin-image";
 import PropTypes from "prop-types";
-import React, { Fragment, useState } from "react";
+import React, {Fragment, useRef, useState} from "react";
 import Logo from "../../components/logo";
 import MainMenu from "../../components/menu/main-menu";
 import MobileNavMenu from "../../components/menu/mobile-menu";
@@ -10,8 +10,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { navigate } from 'gatsby';
 import { LOGOUT } from "../../redux/types/authTypes";
 import { removeStorage } from "../../utils/functions";
+import Profile from '../../assets/images/profile.png';
 
 const Header = ({ data }) => {
+    const [open, setOpen] = useState(false)
+    const menuRef = useRef()
+    const imgRef = useRef()
 
     const dispatch = useDispatch();
 
@@ -35,6 +39,11 @@ const Header = ({ data }) => {
          }
          navigate('/login')
     }
+    window.addEventListener('click', (e)=>{
+        if(e.target !== menuRef.current && e.target !== imgRef.current){
+            setOpen(false)
+        }
+    })
 
     return (
         <header
@@ -68,6 +77,27 @@ const Header = ({ data }) => {
                                     alt=""
                                 />
                             </button>
+                           <div className='relative'>
+                               <img
+                                   ref={imgRef}
+                                   onClick={()=> setOpen(!open)}
+                                   src={Profile}
+                                   alt='user'
+                                   className='profile-img border-4 object-cover box-border border-gray-400 rounded-full cursor-pointer'/>
+                               {open &&
+                                   <div ref={menuRef} className='bg-white h-52 p-4 w-52 shadow-lg absolute profile-dropdown'>
+                                       <ul>
+                                           <li className='p-2 cursor-pointer rounded hover:bg-blue-100'>Profile</li>
+                                           <li className='p-2 cursor-pointer rounded hover:bg-blue-100'>Change Password</li>
+                                           <li className='p-2 cursor-pointer rounded hover:bg-blue-100'>Setting</li>
+                                           <li className='p-2 cursor-pointer rounded hover:bg-blue-100'>Logout</li>
+                                       </ul>
+                                   </div>
+                               }
+
+
+                           </div>
+
                             <button
                                 onClick={ofcanvasHandaler}
                                 onKeyDown={ofcanvasHandaler}
