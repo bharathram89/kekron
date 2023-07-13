@@ -1,4 +1,7 @@
 /* eslint-disable prettier/prettier */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 const config = require("./config/config");
 const activeEnv =
     process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development";
@@ -22,10 +25,11 @@ module.exports = {
         keywords: config.keywords,
     },
 
-    plugins: [
+  plugins: [
         {
             resolve: `gatsby-plugin-gtag`,
-            options: {
+      options: {
+                apiKey: process.env.API_KEY,
                 trackingId: "G-WTT0CDWLRC",
                 head: true,
                 anonymize: true,
@@ -47,6 +51,7 @@ module.exports = {
                             maxWidth: 1920,
                         },
                     },
+                    
                 ],
             },
         },
@@ -136,6 +141,6 @@ module.exports = {
                     },
                 ],
             },
-        },
+    },
     ],
 };

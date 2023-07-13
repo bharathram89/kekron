@@ -10,7 +10,8 @@ import Button from '../../../components/shared/button';
 import SwitchCharacter from './characterSwitcher';
 import { useDispatch, useSelector } from 'react-redux';
 import { HIDE_MODAL } from '../../../redux/types/modalType';
-const CharacterDetail = ({characterid}) => {
+const CharacterDetail = ({ characterid }) => {
+    const [defaultCharacter, setDefaultCharacter] = useState(true)
     const [outfit, setOutfits] = useState({
         Backpack: "",
         Decals: "",
@@ -105,9 +106,17 @@ const CharacterDetail = ({characterid}) => {
         x=x+1;
         setanimation(x)
     }
+    if (userInfo?.userCharacter?.length) {
+        setDefaultCharacter(false)
+    }  
     const handleSave = () => {
-        console.log(outfit)
-        saveCharacter(userInfo.userId, outfit)
+        const obj = {
+            character_id: characterid,
+            outfit,
+            default: defaultCharacter
+        }
+        console.log(obj)
+        saveCharacter(userInfo.userId, obj)
         dispatch({type: HIDE_MODAL})
     }
     const handleChange = (e) => {

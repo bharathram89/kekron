@@ -1,9 +1,9 @@
 import { prepareHeaders } from "../utils/functions";
-import { toast } from "react-toastify";
 
 export const login = async (payload) => {
+
   try {
-    const response = await fetch("https://api.goloadout.com/login", {
+    const response = await fetch(`${process.env.API_URL}/login`, {
       method: "POST",
       headers:  prepareHeaders(),
       body: JSON.stringify(payload),

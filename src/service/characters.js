@@ -1,6 +1,6 @@
 import { prepareHeaders } from "../utils/functions";
 //"https://api.goloadout.com"    "http://127.0.0.1:5000"
-let host = "https://api.goloadout.com";
+let host = process.env.API_URL;
 
 export const getCharacters = async () => {
   try {
@@ -66,7 +66,6 @@ export const saveCharacter = async (id, payload) => {
       },
       body: JSON.stringify(payload),
     });
-
     console.log(response);
   } catch (err) {
     console.log(err);

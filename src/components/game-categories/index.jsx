@@ -7,7 +7,7 @@ const GameCategories = ({ selectItem, categories }) => {
 
     // const allCategories = flatDeep(categories);
 
-    categories.forEach((cat) => {
+    categories?.forEach((cat) => {
         const obj = {
             title: cat
         };

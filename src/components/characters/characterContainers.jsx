@@ -52,6 +52,7 @@ function CharactersContainer({ data, setActive }) {
             margin: "5px",
             position: "relative",
           }}
+          key={item.id}
         >
           <div onClick={() => handleNavigate(item)}>
             <div
